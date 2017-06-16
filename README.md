@@ -1,1 +1,1 @@
-# cdc1
+```sass --watch view/assets/sass:view/assets/css --style compressed ```
