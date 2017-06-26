@@ -1,0 +1,27 @@
+.breadcrumbs{
+  font-style: italic;
+  //line-height: 20px;
+  margin-bottom: 20px;
+
+  b, a, a:not(:last-child):after{
+    @extend %valign;
+  }
+
+  b{
+    margin-right: 20px;
+    color: $dark-green;
+  }
+
+  a{
+    margin-right: 10px;
+    &:not(:last-child):after{
+      content: "›";
+      margin-left: 10px;
+    }
+    &:last-child{
+      font-weight: bold;
+      color: $dark-blue;
+      font-style: normal;
+    }
+  }
+}

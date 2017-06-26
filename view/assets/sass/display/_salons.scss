@@ -1,0 +1,67 @@
+.salons{
+  nav.filters{
+    margin:10px 0 30px;
+    font-size:0px;
+    .form-group{
+      display: block;
+      width: 100%;
+      label{
+        width: 90px;
+        font-size: $font-size;
+        vertical-align: middle;
+      }
+      .form-control{
+        width: calc(100% - 90px);
+      }
+    }
+  }
+  .table{
+    td p{
+      color: $brown;
+    }
+  }
+
+  .details{
+    .onlineInChat{
+      ul{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        li{
+          font-size: 0;
+          img, h4, .notes{
+            @extend %valign;
+          }
+          img{
+            width: 20px;
+            height: 20px;
+          }
+          h4, .notes{
+            font-size: $font-size;
+            box-sizing: border-box;
+            padding: 0 10px;
+          }
+          h4{
+            width: calc(100% - 120px);
+          }
+          .notes{
+            width: 80px;
+            &.one:before{
+              content:"\2605 \2606 \2606 \2606";
+            }
+            &.two:before{
+              content:"\2605 \2605 \2606 \2606";
+            }
+            &.three:before{
+              content:"\2605 \2605 \2605 \2606";
+            }
+            &.four:before{
+              content:"\2605 \2605 \2605 \2605";
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,130 @@
+.nav{
+  box-sizing: border-box;
+  padding: 10px 5vw;
+  background-color: #fff;
+  line-height: 50px;
+
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  z-index: 2;
+
+
+  //@TODO: FIX OVERFLOW
+
+  &#main-nav{
+    top: 0px;
+    #searchThrough{
+      position:absolute;
+      top:0px;
+      left:5vw;
+      width: 0vw;
+      height: 0px;
+      overflow: hidden;
+      line-height: 70px;
+      background-color: #ffffff;
+      z-index: 3;
+      &.active{
+        height: 70px;
+        width: 90vw;
+      }
+      input{
+        width: 100%;
+      }
+    }
+    .nav_left, .nav_right{
+      font-size: $font-size;
+      font-family: $title-font-family;
+      ul.row{
+        margin-bottom: 0px;
+        li{
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: ($font-size - 2px);
+          a.active{
+            border-bottom: 2px solid $green;
+            display: inline-block;
+            letter-spacing: 1px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .nav_right{
+      text-align: right;
+      [class^="icon"]{
+        font-size: 18px;
+        position: relative;
+        z-index: 4;
+        display: block;
+        margin-top: 6px;
+      }
+      .dropdown{
+        .dropdown-me{
+          z-index:3;
+          position: absolute;
+          background-color: #fff;
+          line-height: 40px;
+          width: 160px;
+          left: 50%;
+          transform: translateX(-50%);
+          
+          top: 0px;
+          opacity:0;
+          visibility: hidden;
+          a{
+            display: block;
+            border-top: 1px solid $green;
+            &:hover{
+              background-color: $dark-green;
+              color: #fff;
+            }
+          }
+        }
+
+        &:hover{
+          .dropdown-me{
+            top: 50px;
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+      }
+    }
+    
+    .nav_center{
+      img{
+        display: block;
+        margin: 0 auto;
+        max-width: 100%; 
+        max-height: 50px; 
+      }
+
+    }
+    
+  }
+  &#secondary-nav{
+    
+    top: 70px;
+
+    font-size: 0px;
+    z-index:1;
+    .nav_left, .nav_right{
+      width: 50%;
+      font-size: $font-size;
+    }
+    .nav_left, .nav_right,
+    h2.small_title, .form-inline, p{
+      @extend %valign;
+    }
+    h2.small_title, p{
+      margin-right: 40px;
+    }
+    p{
+      line-height: 1.3;
+
+    }
+  }
+}

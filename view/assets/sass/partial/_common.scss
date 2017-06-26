@@ -1,0 +1,66 @@
+
+@include font-face($font-family: $main-font-name, $file-path: '../fonts/Lato/',$file-name: 'lato-light');
+@include font-face($font-family: $main-font-name, $file-path: '../fonts/Lato/', $style: italic, $file-name: 'lato-lightitalic');
+@include font-face($font-family: $main-font-name, $file-path: '../fonts/Lato/', $weight: bold, $file-name: 'lato-bold');
+@include font-face($font-family: $main-font-name, $file-path: '../fonts/Lato/', $weight: bold, $style: italic, $file-name: 'lato-bolditalic');
+
+@include font-face($font-family: $title-font-name, $file-path: '../fonts/Playfair/',$file-name: 'playfairdisplay-regular');
+@include font-face($font-family: $title-font-name, $file-path: '../fonts/Playfair/', $style: italic, $file-name: 'playfairdisplay-italic');
+@include font-face($font-family: $title-font-name, $file-path: '../fonts/Playfair/', $weight: bold, $file-name: 'playfairdisplay-bold');
+@include font-face($font-family: $title-font-name, $file-path: '../fonts/Playfair/', $weight: bold, $style: italic, $file-name: 'playfairdisplay-bolditalic');
+
+
+@include font-face($font-family: $font-icon, $file-path: '../fonts/fontastic/');
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+*{
+  margin:0;
+}
+body {
+  font-size: $font-size;
+  line-height: 1.5;
+  font-family: $main-font-family;
+  color: $dark-blue;
+
+  padding-top:1px;
+  margin-top: -1px;
+}
+a {
+  color: $dark-green;
+}
+section{
+  &.contact-us{
+    .split-lab{
+      font-size: 0px;
+      label, input{
+        @extend %valign;
+        font-size: $font-size;
+      }
+      label{
+        width: 30%;
+      }
+      input{
+        width: 70%;
+      }
+    }
+  }
+}
+.global{
+  width: 90vw;
+  margin-left:auto;
+  margin-right:auto;
+  //margin-top: 140px;
+  margin-top: 180px;
+}
+.align-center{
+  text-align: center;
+}
+a:hover,
+a:focus {
+  color: $teal;
+}

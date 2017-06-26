@@ -1,0 +1,18 @@
+.discover{
+  .category_nav{
+    .small_title{
+      margin-bottom: 10px;
+      &:not(:first-child){
+        margin-top: 20px;
+      }
+    }
+    ul{
+      li{
+        @extend %valign;
+        margin-right: 10px;
+      }
+    }
+    
+    margin-bottom: 40px;
+  }
+}

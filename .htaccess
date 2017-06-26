@@ -1,4 +1,67 @@
 RewriteEngine On
 RewriteBase /
 
+#processes
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^processes/(.*)$ index.php?p=processes&action=$1 [L]
+
+#for categories
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^discover/(.*)/(.*)/([0-9]+)$ index.php?p=discover&type=$1&category=$2&id=$3 [L]
+
+RewriteRule ^discover/(.*)/(.*)$ index.php?p=discover&type=$1&category=$2 [L]
+
+RewriteRule ^discover/(.*)$ index.php?p=discover&type=$1 [L]
+
+
+#if several parameter 2 level
+#RewriteCond %{QUERY_STRING} !^p
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(?!admin|view)(.*)/([0-9]+)$ index.php?p=$1&id=$2 [L]
+
+
+#if several parameter 2 level ID
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(?!admin|processes)(.*)/([0-9]+)$ index.php?p=$1&id=$2 [L]
+
+#if several parameter 2 level ID
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(?!admin|processes)(.*)/([0-9]+)/edit$ index.php?p=$1&id=$2&edit=edit [L]
+
+
+#standard rewrite w/ 1 level
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(?!admin|view|book|movie|exposition)(.*)$ index.php?p=$1 [L]
+
+#users edit
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/(.*)/([0-9]+)/edit$ index.php?cat=admin&p=$1&id=$2&edit=edit [L]
+
+#standard rewrite w/ 1 level
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/(.*)$ index.php?cat=admin&p=$1 [L]
+
+
+#standard rewrite w/ 1 level
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin$ index.php?cat=admin&p=dashboard [L]
+
+
+#if asking directly for type
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(book|movie|exposition)$ index.php?p=discover&type=$1 [L]
+
+
+
+
 #ErrorDocument 404 index.php?p=404

@@ -1,0 +1,16 @@
+button{
+  outline: none;
+}
+.btn{
+  outline: none;
+  &.btn-primary{
+    background-color: #fff;
+    color: $dark-green;
+    border-color: $green;
+    &:hover, &:active{
+      background-color: $dark-green;
+      border-color: $dark-green;
+      color: #fff;
+    }
+  }
+}

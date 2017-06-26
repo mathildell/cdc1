@@ -1,0 +1,59 @@
+.home{
+  margin-top: -40px;
+  header{
+    overflow: hidden;
+    height: calc(100vh - (140px + 5vw));
+    width: 90vw;
+    margin: 0 auto 5vw;
+    position: relative;
+    background:$green url('../img/patrick-tomasso-71909.jpg');
+    background-size: cover;
+    /*
+    &:before{
+      z-index: 0;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0.5;
+    }
+    */
+    h1{
+      z-index:1;
+      display: block;
+      padding: 30px 50px 10px 10px;
+      background-color: #fff;
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+    }
+  }
+  section{
+    margin-bottom: 100px;
+  }
+  .concept{
+    .text-content{
+      column-count: 2;
+      column-gap: 90px;
+      font-size: ($font-size + 2px);
+      p, .quote{
+        margin-bottom: 20px;
+      }/*
+      .quote{
+        display: block;
+        padding: 10px 40px;
+        font-size: 30px;
+        font-style: italic;
+        background: tomato;
+      }
+      .pub{
+        -webkit-column-span: all;
+        column-span: all;
+        background: blue; 
+      }*/
+    }
+  }
+}
+
+

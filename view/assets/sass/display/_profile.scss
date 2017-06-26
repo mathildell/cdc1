@@ -1,0 +1,26 @@
+.profile{
+  section{
+    margin-bottom: 100px;
+  }
+  .profile-pic{
+    img{
+      display: block;
+      width: 100%;
+    }
+  }
+  .profile-info{
+    h3{
+      font-size: ($font-size + 8px);
+      color: $brown;
+    }
+    p{
+      margin-bottom: 10px;
+      color: $dark-green;
+    }
+    .description{
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+  }
+  
+}

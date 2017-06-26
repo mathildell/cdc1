@@ -1,0 +1,52 @@
+.footer{
+  border-top: 1px solid $green;
+  padding-top: 30px;
+  margin: 30px 5vw 0;
+  font-size: ($font-size - 2px);
+  .footer_title{
+    font-size: ($font-size + 2px);
+  }
+  .top{
+    .identity{
+      img{
+        height: 60px;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+    .follow{
+      ul{
+        margin-top: 30px;
+        li{
+          font-size: ($font-size + 4px);
+          @extend %valign;
+          margin-right: 20px;
+          a{
+            display: block!important;
+          }
+        }
+      }
+    }
+    .newsletter{
+      form{
+        margin-top: 30px;
+      }
+    }
+  }
+  .bottom{
+    margin-top: 30px;
+    padding: 30px 0;
+    border-top: 1px solid $green;
+    @extend %clearfix;
+    a{
+      color: $dark-blue;
+    }
+    li{
+      @extend %valign;
+      margin-right: 20px;
+    }
+    .row div{
+      text-align: right;
+    }
+  }
+}

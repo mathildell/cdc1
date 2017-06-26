@@ -1,0 +1,40 @@
+h1, h2, h3, h4, h5, h6{
+  font-family: $title-font-family;
+  line-height: 1.5;
+
+  &.small_title{
+    font-size: 15px;
+    font-weight: normal;
+  }
+  &.intermediate_title{
+    font-size: 25px;
+    font-weight: normal;
+    color: $dark-green;
+    margin-bottom: 20px;
+  }
+  &.main_title{
+    line-height:0.8;
+    font-size: 50px;
+    i{
+      font-size: 70px;
+      color: $green;
+    }
+  }
+  &.big_title{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 60px;
+
+  }
+  &.medium_title{
+    font-weight: normal;
+    font-size: 45px;
+    margin-bottom: 60px; 
+    i{
+      color: $brown;
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+  }
+}
