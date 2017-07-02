@@ -10,23 +10,26 @@
   z-index: 2;
 
 
-  //@TODO: FIX OVERFLOW
-
   &#main-nav{
     top: 0px;
     #searchThrough{
       position:absolute;
       top:0px;
-      left:5vw;
+      right:5vw;
       width: 0vw;
       height: 0px;
       overflow: hidden;
       line-height: 70px;
       background-color: #ffffff;
       z-index: 3;
+      transition: opacity 0.4s ease;
+      opacity: 0;
+      visibility: hidden;
       &.active{
         height: 70px;
         width: 90vw;
+        opacity: 1;
+        visibility: visible;
       }
       input{
         width: 100%;
@@ -53,7 +56,12 @@
 
     .nav_right{
       text-align: right;
-      [class^="icon"]{
+      .logout{
+        @extend %valign;
+        font-size: 18px;
+        vertical-align: -5px;
+      }
+      #searchbar{
         font-size: 18px;
         position: relative;
         z-index: 4;
@@ -66,13 +74,17 @@
           position: absolute;
           background-color: #fff;
           line-height: 40px;
-          width: 160px;
+          width: 180px;
           left: 50%;
           transform: translateX(-50%);
-          
+          box-shadow: 0px 5px 8px $green;
+
           top: 0px;
           opacity:0;
           visibility: hidden;
+
+          transition: all 0.4s ease;
+
           a{
             display: block;
             border-top: 1px solid $green;
@@ -106,14 +118,20 @@
     
   }
   &#secondary-nav{
-    
     top: 70px;
-
     font-size: 0px;
     z-index:1;
     .nav_left, .nav_right{
       width: 50%;
       font-size: $font-size;
+    }
+    .nav_right{
+      p{
+        width: 50%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     .nav_left, .nav_right,
     h2.small_title, .form-inline, p{

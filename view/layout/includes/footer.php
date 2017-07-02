@@ -3,27 +3,13 @@
     <div class="row">
       <div class="col-sm-4 identity">
         <img src="<? $root; ?>/view/assets/img/logo.png">
-        <p>
-          4 rue du Gros Caillou, 75005 Paris
-          <br/>
-          +33 923129034
-          <br/>
-          bonjour@clubcritique.fr
-        </p>
+        <?php $footer = $pages->getOne(4); ?>
+        <?= ($footer['content']) ? html_entity_decode($footer['content']) : ''?>
       </div>
       <div class="col-sm-4 follow">
         <h4 class="footer_title">Nous suivre</h4>
-        <ul>
-          <li>
-            <a href="#" class="icon-facebook-alt"></a>
-          </li>
-          <li>
-            <a href="#" class="icon-twitter"></a>
-          </li>
-          <li>
-            <a href="#" class="icon-google-plus"></a>
-          </li>
-        </ul>
+        <?php $footer = $pages->getOne(3); ?>
+        <?= ($footer['content']) ? html_entity_decode($footer['content']) : ''?>
       </div>
       <div class="col-sm-4 newsletter">
         <h4 class="footer_title">Soyez avertis des prochains salons <br>&amp; partagez vos livres préférés</h4>
@@ -37,12 +23,12 @@
   <nav class="bottom">
     <div class="row">
       <ul class="col-sm-8">
-        <li>
-          <a href="#">Politique de confidentialité</a>
-        </li>
-        <li>
-          <a href="#">Conditions générales d’utilisation</a>
-        </li>
+        <?php 
+          $footer_links = $pages->getPages();
+          foreach ($footer_links as $key => $link) {
+            echo '<li><a href="'.$root.'/page/'.$link['id'].'">'.$link['name'].'</a></li>';
+          }
+        ?>
       </ul>
       <div class="col-sm-4">
         &copy; ESGI 2017

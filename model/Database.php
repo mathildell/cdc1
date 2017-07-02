@@ -72,10 +72,25 @@ class Database{
         $i++;
       }
       end($data);
-      $query .= " WHERE id = ".key($data);
+      if($table == "exchanges"){
+        $query .= " WHERE ex_id = ".key($data);
+      }else{
+        $query .= " WHERE id = ".key($data);
+      }
     }
-    else if($action === "remove"){
 
+    else if($action === "remove"){
+      $query = "DELETE FROM ".$table;
+      $query .= " WHERE "; 
+      $i = 0;
+      foreach ($data as $columnName => $value) {
+        if($i !== 0){
+          $query .= " AND ";
+        }
+        $query .= ltrim($columnName, ':')." = ".$columnName;
+        
+        $i++;
+      }
     }
 
 
@@ -127,10 +142,15 @@ class Database{
     $this->sql->execute();
     return $this->sql->fetchAll(PDO::FETCH_ASSOC);
   }
+
   public function getCustom($req){
     $this->sql = $this->db->prepare($req);
     $this->sql->execute();
     return $this->sql->fetch(PDO::FETCH_ASSOC);
+  }
+  public function execCustom($req){
+    $this->sql = $this->db->prepare($req);
+    return $this->sql->execute();
   }
   
 }

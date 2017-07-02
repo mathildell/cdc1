@@ -3,6 +3,7 @@ button{
 }
 .btn{
   outline: none;
+  transition: all 0.4s ease;
   &.btn-primary{
     background-color: #fff;
     color: $dark-green;
@@ -11,6 +12,46 @@ button{
       background-color: $dark-green;
       border-color: $dark-green;
       color: #fff;
+    }
+  }
+  &.btn-amazon {
+    span{
+      @extend %valign;
+      //color: #ff9900;
+      margin-right: 5px;
+    }
+    background-color: #fff;
+    color: #232f3e;
+    border-color: #232f3e;
+    &:hover, &:active{
+      background-color: #232f3e;
+      border-color: #232f3e;
+      color: #ff9900;
+    }
+  }
+  &.btn-file {
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    span{
+      @extend %valign;
+      margin-right: 5px;
+      vertical-align: -2px;
+    }
+    input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
     }
   }
 }

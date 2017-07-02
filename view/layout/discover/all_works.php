@@ -1,5 +1,5 @@
 <?php
-$books = isset($data) ? $works->getAllWhere($data) : $works->getAll();
+$books = isset($data) ? $works->getAllWhere($data) : $works->getAllWhere([':is_deleted' => 0]);
 
 if($books){
 

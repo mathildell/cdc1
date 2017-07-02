@@ -1,17 +1,17 @@
 <nav id="main-nav" class="nav row">
-    <form class="form-inline" id="searchThrough" action="<? $root; ?>/search" method="POST">
+    <form class="form-inline <?= (isset($_GET['p']) && $_GET['p'] === 'search') ? ' active' : ''; ?>" id="searchThrough" action="<? $root; ?>/search" method="POST">
         <input type="text" class="form-control" placeholder="Rechercher un livre, un auteur, un thème..." name="search_query"/>
     </form>
     <div class="col-md-5 nav_left">
         <ul class="row">
             <li class="col-md-4">
-                <a href="<?= $root; ?>/home" <?= ($_GET["p"] === "home") ? 'class="active"' : ''; ?>>Accueil</a>
+                <a href="<?= $root; ?>/home" <?= (!isset($_GET['cat']) && $_GET["p"] === "home") ? 'class="active"' : ''; ?>>Accueil</a>
             </li>
             <li class="col-md-4">
-                <a href="<?= $root; ?>/discover" <?= ($_GET["p"] === "discover") ? 'class="active"' : ''; ?>>Découvrir</a>
+                <a href="<?= $root; ?>/discover" <?= (!isset($_GET['cat']) && $_GET["p"] === "discover") ? 'class="active"' : ''; ?>>Découvrir</a>
             </li>
             <li class="col-md-4">
-                <a href="<?= $root; ?>/salons" <?= ($_GET["p"] === "salons") ? 'class="active"' : ''; ?>>Salons</a>
+                <a href="<?= $root; ?>/salons" <?= (!isset($_GET['cat']) && $_GET["p"] === "salons") ? 'class="active"' : ''; ?>>Salons</a>
             </li>
 
         </ul>
@@ -22,14 +22,19 @@
     <div class="col-md-5 nav_right">
         <ul class="row">
             <li class="col-md-4">
-                <a href="<?= $root; ?>/contact" <?= ($_GET["p"] === "contact") ? 'class="active"' : ''; ?>>Contact</a>
+                <a href="<?= $root; ?>/contact" <?= (!isset($_GET['cat']) && $_GET["p"] === "contact") ? 'class="active"' : ''; ?>>Contact</a>
             </li>
             <li class="col-md-6 dropdown align-center">
             <?php if(isset($curr_user)){
                 ?>
                 <div class="dropdown-me">
                     <a href="<?= $root.'/user/'.$curr_user['id'].'/edit'; ?>">Éditer le profil</a>
-                    <?= ($curr_user['isAdmin']) ? '<a href="'.$root.'/admin">Admin</a>' : ""; ?> 
+                    <a href="<?= $root.'/user/'.$curr_user['id'].'/messages'; ?>">Messages <?= count($unreads) > 0 ? ' <span class="tag unreadTag">'.count($unreads).' non-lu</span>' : ''; ?></a>
+                    <?php if(intval($curr_user['isAdmin']) == 1){
+                    ?>
+                    <a href="<?= $root; ?>/admin">Admin <?= (count($unreadsAdmin) > 0) ? ' <span class="tag unreadTag">'.count($unreadsAdmin).' non-lu</span>' : ''; ?></a>
+                    <?php
+                    } ?>
                 </div>
             <?php
             }
@@ -40,15 +45,15 @@
                 }else{
             ?>
 
-                <a href="<?= $root.'/user/'.$curr_user['id']; ?>" <?= ($_GET["p"] === "user" && $_GET['id'] === $curr_user['id']) ? 'class="active"' : ''; ?>> <?= $curr_user['username']; ?></a>
-                | <a href="<?= $root; ?>/processes/logout">b</a>
+                <a href="<?= $root.'/user/'.$curr_user['id']; ?>" <?= ($_GET["p"] === "user" && $_GET['id'] === $curr_user['id']) ? 'class="active"' : ''; ?>> <?= $curr_user['username']; ?><?= (count($unreads) > 0 || ( isset($unreadsAdmin) && count($unreadsAdmin) > 0)) ? ' <span class="unreadNotif icon-mail"></span>' : ''; ?></a>
+                | <a href="<?= $root; ?>/processes/logout" class="logout icon-locker-streamline-unlock"></a>
             <?php
                 }
             ?>
 
             </li>
             <li class="col-md-2">
-                <a href="#" class="icon-search"></a>
+                <a href="#" id="searchbar" class="icon-search"></a>
             </li>
         </ul>
     </div>

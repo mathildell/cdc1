@@ -19,6 +19,12 @@
   <div class="col-sm-6">
     <h2 class="intermediate_title">S'inscrire</h2>
     <form class="form" action="<?= $root; ?>/processes/newuser" method="post" id="registerForm">
+    <!--
+      <div class="form-group">
+        <label for="email">Nous rejoindre</label>
+        <p>Seule votre adresse email est requise pour rejoindre l'univers du Club des Critiques et profiter de tous nos contenus gratuitement.</p>
+      </div>
+      -->
       <div class="form-group">
         <label for="email">Adresse email</label>
         <input type="email" name="email" id="email" class="form-control">

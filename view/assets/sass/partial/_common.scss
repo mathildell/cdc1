@@ -32,6 +32,7 @@ body {
 }
 a {
   color: $dark-green;
+  transition: all 0.3s ease;
 }
 section{
   &.contact-us{
@@ -50,6 +51,40 @@ section{
     }
   }
 }
+
+#filter_salons{
+  td i{
+    display:inline-block;
+    margin-left: 5px;
+    color: $teal;
+  }
+}
+.tag{
+  font-size:10px;
+  letter-spacing: 1px;
+  background-color: #f2f2f2;
+  color: #888;
+  padding: 3px 10px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  &.encours{
+    font-weight: bold;
+    background-color: $dark-green;
+    color: #fff;
+  }
+  &.unreadTag{
+    background-color: lighten(tomato, 30%);
+    color: darken(tomato, 10%);
+    margin-left: 10px;
+  }
+}
+nav .tag.unreadTag{
+  font-family: $main-font-family;
+  font-size: 9px;
+    margin-left: 0px;
+  letter-spacing: 0px;
+}
+
 .global{
   width: 90vw;
   margin-left:auto;
@@ -60,7 +95,31 @@ section{
 .align-center{
   text-align: center;
 }
+.align-right{
+  text-align: right;
+}
+.unread{
+  display: block;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  background-color: tomato;
+}
+.unreadNotif{
+  @extend %valign;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: tomato;
+  &:before{    
+    font-size: 12px;
+    line-height: 20px;
+    display: block;
+  }
+}
 a:hover,
 a:focus {
   color: $teal;
+  text-decoration: none;
 }

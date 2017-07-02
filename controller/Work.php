@@ -11,6 +11,30 @@ class Work{
   public function getAll(){
     return $this->db->getAll("works");
   }
+  public function getOrdered(){
+    $request = "
+    SELECT works.* 
+    FROM works 
+    WHERE is_deleted = 0
+    ORDER BY type_id ASC";
+    return $this->db->getCustomAll($request);
+  }
+
+  public function remove($id){
+    $request = "UPDATE salons SET work_isdeleted = 1 WHERE work_id = ".$id;
+    $this->db->execCustom($request);
+    return $this->db->remove("works", [':id' => intval($id) ]);
+
+
+  }
+  public function update($data){
+    return $this->db->edit("works", $data);
+  }
+
+
+  public function new($data){
+    return $this->db->save("works", $data);
+  }
 
 
   public function getAllWhere($data){
@@ -29,7 +53,7 @@ class Work{
   }
 
   public function searchFor($query){
-    $request = "SELECT works.* FROM works WHERE (description LIKE '%$query%' OR name LIKE '%$query%' OR author LIKE '%$query%' )";
+    $request = "SELECT works.* FROM works WHERE (description LIKE '%$query%' OR name LIKE '%$query%' OR author LIKE '%$query%' ) AND is_deleted = 0";
     return $this->db->getCustomAll($request);
   }
 

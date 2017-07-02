@@ -1,7 +1,55 @@
 .salons{
+  .chat{
+    overflow: hidden;
+    padding: 30px;
+    @extend %clearfix;
+    .message{
+      &:not(:last-child){
+        margin-bottom: 40px;
+      }
+      float: left;
+      clear: both;
+      max-width: 70%;
+      .message-content{
+        background-color: lighten($dark-blue, 75%);
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+      .sender{
+        margin-top: 10px;
+        font-size: ($font-size - 2px);
+        img, span{
+          @extend %valign;
+          margin-right: 10px;
+        }
+        img{
+          width: 20px;
+          height: 20px;
+          border-radius: 3px;
+          object-fit: cover;
+        }
+        datetime{
+          margin-left: 20px;
+          color: $brown;
+        }
+      }
+      &.me{
+        float: right;
+        .message-content{
+          background-color: lighten($green, 5%);
+          color: darken($green, 60%);
+        }
+      }
+    }
+  }
   nav.filters{
-    margin:10px 0 30px;
+    margin:10px 0 20px;
     font-size:0px;
+    padding:0px 10px 20px;
+    border-bottom: 1px solid $green;
+    h3 + form{
+      margin-top: 10px;
+    }
     .form-group{
       display: block;
       width: 100%;
@@ -21,40 +69,82 @@
     }
   }
 
+
   .details{
+    .chatbox{
+      border-radius: 5px;
+      width: 100%;
+      display: block;
+      height: 300px;
+      border: 1px solid $green;
+      margin-bottom: 30px;
+      &.chatbox-old{
+        height: 500px;
+      }
+    }
+    .disclaimer{
+      display: block;
+      margin: 0px 0px 10px;
+      color: lighten($dark-blue, 60%);
+    }
+    .grade{
+      .form-group{
+          color: $brown;
+        padding: 0 10px;
+        font-size: 40px;
+        @extend %valign;
+        label:before{
+          content:"\2606";
+        }
+        &.active{
+          label:before{
+            content:"\2605";
+          }
+        }
+        input{
+          display: none;
+        }
+      }
+
+    }
     .onlineInChat{
-      ul{
+      .userList{
         margin-top: 10px;
         margin-bottom: 20px;
         li{
           font-size: 0;
+          display: block;
+          margin-bottom: 5px;
           img, h4, .notes{
             @extend %valign;
           }
           img{
             width: 20px;
             height: 20px;
+            border-radius: 2px;
+            object-fit: cover;
           }
           h4, .notes{
             font-size: $font-size;
-            box-sizing: border-box;
-            padding: 0 10px;
           }
           h4{
-            width: calc(100% - 120px);
+            box-sizing: border-box;
+            padding: 0 10px;
+            width: calc(100% - 100px);
           }
           .notes{
             width: 80px;
-            &.one:before{
+            color: $brown;
+            &[data-grade="1"]:before{
               content:"\2605 \2606 \2606 \2606";
             }
-            &.two:before{
+            &[data-grade="2"]:before{
               content:"\2605 \2605 \2606 \2606";
             }
-            &.three:before{
+            &[data-grade="3"]:before{
               content:"\2605 \2605 \2605 \2606";
             }
-            &.four:before{
+            &[data-grade="4"]:before{
               content:"\2605 \2605 \2605 \2605";
             }
           }

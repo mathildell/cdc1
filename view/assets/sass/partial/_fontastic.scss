@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 [data-icon]:before {
   font-family: "cdc" !important;
   content: attr(data-icon);
@@ -10,7 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.alert:before,
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "cdc" !important;
@@ -24,6 +26,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon-search:before {
   content: "\61";
 }
@@ -35,4 +38,52 @@
 }
 .icon-google-plus:before {
   content: "\64";
+}
+.icon-locker-streamline-unlock:before {
+  content: "\65";
+}
+.icon-mail:before {
+  content: "\66";
+}
+.icon-delete-garbage-streamline:before {
+  content: "\67";
+}
+.icon-check:before {
+  content: "\68";
+}
+.icon-picture-streamline:before {
+  content: "\69";
+}
+.icon-amazon:before {
+  content: "\6a";
+}
+.icon-x:before {
+  content: "\6b";
+}
+.icon-alert:before {
+  content: "\6c";
+}
+.icon-text-height:before {
+  content: "\6d";
+}
+.icon-bold:before {
+  content: "\6e";
+}
+.icon-italic:before {
+  content: "\6f";
+}
+.icon-list-bullet:before {
+  content: "\70";
+}
+.icon-list-number:before {
+  content: "\71";
+}
+.icon-link:before {
+  content: "\72";
+}
+.icon-cw:before {
+  content: "\73";
+}
+.icon-ccw:before {
+  content: "\74";
 }

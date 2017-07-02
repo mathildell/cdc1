@@ -3,12 +3,16 @@
     $exchanges = $user->getExchanges($theUser['id']);
     $count_exchanges = count($exchanges);
   ?>
-    <form class="form" method="post" action="<?= $root ?>/processes/edituser">
+    <form class="form" method="post" action="<?= $root ?>/processes/edituser" enctype="multipart/form-data">
       <input type="hidden" name="userid" value="<?= $theUser['id']; ?>">
       <section class="pres">
       <div class="row">
         <div class="col-sm-3 profile-pic">
-          <img src="<?= $root.$theUser['picture']; ?>">
+          <img src="<?= $root.$theUser['picture']; ?>" id="uploadImage">
+          <label class="btn btn-default btn-file">
+            <span class="icon-picture-streamline"></span>
+              Browse <input type="file" name="profile_picture" style="display: none;">
+          </label>
         </div>
         <div class="col-sm-7 col-sm-offset-1 profile-info">
           <div class="form-group">
@@ -50,3 +54,11 @@
   <?php
   ?>
 </div>
+
+<script>
+$(function(){
+  $('.btn-file input').change(function(e) {
+      readURL(this);
+  });
+});
+</script>

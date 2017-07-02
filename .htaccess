@@ -6,6 +6,12 @@ RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^processes/(.*)$ index.php?p=processes&action=$1 [L]
 
+
+#if several parameter 2 level ID
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(?!admin|processes)user/([0-9]+)/messages/([0-9]+)$ index.php?p=user&id=$1&messages=messages&msg_id=$2 [L]
+
 #for categories
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -33,6 +39,12 @@ RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(?!admin|processes)(.*)/([0-9]+)/edit$ index.php?p=$1&id=$2&edit=edit [L]
 
+#if several parameter 2 level ID
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(?!admin|processes)(.*)/([0-9]+)/messages$ index.php?p=$1&id=$2&messages=messages [L]
+
+
 
 #standard rewrite w/ 1 level
 RewriteCond %{QUERY_STRING} !^p
@@ -42,7 +54,17 @@ RewriteRule ^(?!admin|view|book|movie|exposition)(.*)$ index.php?p=$1 [L]
 #users edit
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/messages/([0-9]+)$ index.php?cat=admin&p=messages&id=$1 [L]
+
+#users edit
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/(.*)/([0-9]+)/edit$ index.php?cat=admin&p=$1&id=$2&edit=edit [L]
+
+#users new
+RewriteCond %{QUERY_STRING} !^p
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/(.*)/new$ index.php?cat=admin&p=$1&new=new [L]
 
 #standard rewrite w/ 1 level
 RewriteCond %{QUERY_STRING} !^p

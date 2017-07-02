@@ -25,6 +25,8 @@
         $currPage = $type->getOne($setid)["name"];
       }else if($breadcrumbs[1] === "categories"){
         $currPage = $category->getOne($setid)["name"];
+      }else if($breadcrumbs[1] === "pages"){
+        $currPage = $pages->getOne($setid)["name"];
       }else{
         $currPage = "";
       }

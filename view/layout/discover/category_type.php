@@ -11,7 +11,7 @@
   echo '</ul>';
 
   //list of all works from this type
-  $data = [':type_id' => $type->getIdByName($discover_type)];
+  $data = [':type_id' => $type->getIdByName($discover_type), ':is_deleted' => 0];
 
 ?>
 

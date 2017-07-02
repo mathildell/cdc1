@@ -3,11 +3,10 @@
     $rm = $user->removeUser($_POST['id']);
     if($rm){
       $_SESSION['feedback'] = 'userdeleted';
-      echo '<script>window.location.replace("'.$root.'/users");</script>';
-
     }else{
-      //Erreur database
+      $_SESSION['feedback'] = 'userdeleted_error';
     }
+    echo '<script>window.location.replace("'.$root.'/admin/users");</script>';
   }else{
     $_SESSION['feedback'] = 'notallowed';
 ?>

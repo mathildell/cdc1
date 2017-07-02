@@ -1,5 +1,5 @@
-<form class="form">
-  
+<form class="form" method="post" action="<?= $root ?>/processes/edittype">
+  <input id="type_id" type="hidden" name="type_id" value="<?= $theType['id'] ?>">
 <div class="row">
   <div class="col-sm-6">
     <div class="form-group">

@@ -2,6 +2,8 @@
   font-style: italic;
   //line-height: 20px;
   margin-bottom: 20px;
+  background-color: lighten($green, 10%);
+  padding: 10px 20px;
 
   b, a, a:not(:last-child):after{
     @extend %valign;
@@ -20,7 +22,7 @@
     }
     &:last-child{
       font-weight: bold;
-      color: $dark-blue;
+      color: $brown;
       font-style: normal;
     }
   }

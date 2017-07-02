@@ -9,20 +9,91 @@ class Salons{
   }
 
   public function getAll(){
-    return $this->db->getAll("salons");
+    //return $this->db->getAll("salons");
+    $request = "SELECT * FROM salons ";
+    return $this->db->getCustomAll($request);
+  }
+
+  public function save($data){
+    return $this->db->save("salons", $data);
+  }
+
+  public function remove($id){
+    return $this->db->remove("salons", [':id' => intval($id) ]);
+  }
+
+  public function getAllChatMessagesTime(){
+    $request = "
+      SELECT chatbox.timestamp
+      FROM chatbox";
+    return $this->db->getCustomAll($request);
+  }
+
+  public function getChatMessages($salon_id){
+    $request = "
+      SELECT users.username,
+             users.picture,
+             chatbox.user_id, 
+             chatbox.messages,
+             chatbox.timestamp
+      FROM users
+      JOIN chatbox
+      ON chatbox.user_id = users.id
+      WHERE chatbox.salon_id = ".$salon_id."
+      ORDER BY chatbox.id ASC
+      ";
+    return $this->db->getCustomAll($request);
+  }
+
+  public function update($data){
+    return $this->db->edit("salons", $data);
   }
 
   public function getNextSalon(){
-    $request = "SELECT salons.* FROM salons ORDER BY date DESC LIMIT 1";
-    return $this->db->getCustom($request);
+    $req1 = $this->db->getCustom("SELECT salons.* FROM salons WHERE running = 1");
+    if($req1){
+      return $req1;
+    }else{
+      return $this->db->getCustom("
+        SELECT * FROM salons 
+        WHERE salons.date > NOW() 
+          AND work_isdeleted = 0
+        ORDER BY salons.date ASC");
+    }
   }
-
   public function getOne($data){
     return $this->db->get("salons", [':id' => $data]);
   }
 
+  public function sendChatMessage($data){
+    return $this->db->save("chatbox", $data);
+  }
+
+  public function hasVoted($id_salon, $id_user){
+    $request = "
+      SELECT * FROM notes
+      WHERE user_id = ".$id_user." AND salon_id = ".$id_salon;
+    return $this->db->getCustom($request);
+  }
+  public function registerGrade($data){
+
+    return $this->db->save("notes", $data);
+  }
+  public function getGrades($id){
+    $request = "
+      SELECT users.username, 
+             users.picture,
+             notes.id, 
+             notes.grade 
+      FROM notes 
+      JOIN users 
+      ON notes.user_id = users.id
+      WHERE notes.salon_id = ".$id;
+    return $this->db->getCustomAll($request);
+  }
+
   public function getWorkOfSalon($id){
-    $request = "SELECT works.* FROM works JOIN salons ON works.id = salons.work_id WHERE works.id = ".$id;
+    $request = "SELECT works.* FROM works JOIN salons ON works.id = salons.work_id WHERE salons.work_isdeleted = 0 AND works.id = ".$id;
     return $this->db->getCustom($request);
   }
 

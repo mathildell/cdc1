@@ -1,7 +1,32 @@
 .alert{
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 70px;
+  right: 80px;
   max-width: 400px;
   z-index: 999;
+  &:before{
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: inherit;
+    border: 1px solid #fff;
+    border-color:inherit;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+
+    font-size: 20px;
+    line-height: 30px;
+    display: block;
+    text-align: center;
+  }
+  &.alert-danger{
+    &:before{content: "\6c";}
+    &, &:before{box-shadow: 0px 5px 8px lighten(tomato, 20%);}
+  }
+  &.alert-success{
+    &:before{content: "\68";}
+    &, &:before{box-shadow: 0px 5px 8px $green;}
+  }
 }

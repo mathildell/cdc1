@@ -2,6 +2,12 @@
   font-size: 0px;
   margin-bottom: 40px;
 
+
+  &:hover{
+    .image-holder img{
+      box-shadow: 0px 0px 10px rgba($dark-green, 0.7);
+    }
+  }
   .image-holder, .book-info{
     display: inline-block;
     vertical-align: top;
@@ -15,6 +21,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: all 0.3s ease;
     }
   }
 
@@ -22,7 +29,7 @@
     font-size: $font-size;
     box-sizing:border-box;
 
-    padding: 20px;
+    padding: 0px 20px;
     width: calc(100% - 120px);
     h3{
       font-size: ($font-size + 6px);
@@ -33,6 +40,26 @@
     }
     p{
       color: $brown;
+      
+      &.status{
+        span{
+          color: $dark-green;
+        }
+      }
+      b.wanted{
+        background-color: $dark-green;
+        padding: 5px 10px;
+        color: #fff;
+        /* border: 1px solid #D99E7E; */
+        border-radius: 3px;
+      }
+      &.friends{
+        font-size: ($font-size - 2px);
+        i{
+          color: $dark-green;
+          font-style: normal;
+        }
+      }
     }
 
     .description{
@@ -49,6 +76,22 @@
       padding: 20px 20px 20px 70px;
       width: 70%;
       max-width: 600px;
+    }
+
+  }
+  &.book-small{
+    .image-holder{
+      width: 80px;
+      height: 80px;
+      img{border-radius: 5px;}
+    }
+    .book-info{
+      h3{
+        font-size: ($font-size + 3px);
+        margin-bottom:10px;
+      }
+      padding: 0px 0px 0px 20px;
+      width: calc(100% - 80px);
     }
 
   }

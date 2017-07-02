@@ -1,5 +1,6 @@
 // VENDOR
 @import './vendor/bootstrap/stylesheets/_bootstrap';
+@import './vendor/_jquery-ui.min';
 
 // MODULE
 @import './module/_var';
@@ -15,6 +16,8 @@
 @import './partial/_alert';
 @import './partial/_breadcrumbs';
 @import './partial/_switch';
+@import './partial/_datatable';
+@import './partial/_jqueryui';
 
 // DISPLAY
 @import './display/_header';
