@@ -49,7 +49,8 @@
           <?= (intval($page['is_footer_link']) === 1) ? 'Oui' : 'Non'; ?>
         </td>
         <td>
-        <form id="deletepage_<?= $page['id']; ?>" action="<?= $root; ?>/processes/deletepage" method="post" onsubmit="event.preventDefault();">
+
+          <form id="deletepage_<?= $page['id']; ?>" action="<?= $root; ?>/processes/deletepage" method="post" onsubmit="event.preventDefault();">
             <a class="btn btn-primary" href="<?= $root.'/admin/pages/'.$page['id'].'/edit'; ?>">edit</a>
             <input type="hidden" name="id" value="<?= $page['id']; ?>"><input type="submit" class="btn btn-danger" onclick="confirmDelete(<?= $page['id']; ?>)" value="delete"> 
           </form>
@@ -63,9 +64,13 @@
 </div>
 <script>
 function confirmDelete(id){
-  if(confirm('Are you sure?')){
-    document.getElementById('deletepage_'+id).submit();
+  if(id != 3 && id != 4 && id != 5){
+    if(confirm('Are you sure?')){
+      document.getElementById('deletepage_'+id).submit();
+    }
+    return false;
+  }else{
+    alert('Ces éléments ne peuvent être supprimés');
   }
-  return false;
 }
 </script>

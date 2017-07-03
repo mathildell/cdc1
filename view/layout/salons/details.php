@@ -10,7 +10,11 @@ $gradesCount = count($grades);
 ?>
 <div class="details">
 <?php
-  if($curr_user['id'] === $salonDetails['admin_salon_id']){
+  if(
+    $curr_user['id'] === $salonDetails['admin_salon_id']
+  ){
+    if(strtotime( $salonDetails['date'] ) > time() || $salonDetails['running'] == 1){
+
 ?>
 <div class="row">
   <div class="col-sm-5"> 
@@ -23,7 +27,7 @@ $gradesCount = count($grades);
     </p>
     <br>
     <p>
-      De ce fait, vous pouvez éditer sa date et son heure de commencement, le marquer comme "en cours", et éditer l'oeuvre sur laquelle il portera. 
+      De ce fait, vous pouvez éditer sa date et son heure de commencement, le marquer comme "en cours", et changer le nomdre de participants maximum. 
     </p>
     <br>
     <div class="align-right">
@@ -55,7 +59,49 @@ $gradesCount = count($grades);
     <p><i style="color: gray;">* En aucun cas cette note ne doit se baser sur l'opinion personelle du participant.</i></p>
   </div>
 </div>
+<?php
+}else{
+?>
+<div class="row">
+  <div class="col-sm-6"> 
+    <h3 class="small_title">
+      <?= (intval(date('G')) > 4 && intval(date('G')) < 18) ? 'Bonjour '.ucfirst($curr_user['username']) : 'Bonsoir '.ucfirst($curr_user['username']); ?>,
+    </h3>
+    <br>
+    <p>
+      Vous avez été administré ce salon le <?= date( 'l jS F \à H\hi', strtotime( $salonDetails['date'] )); ?>.
+    </p>
+    <br>
+    <p>
+      Il n'est plus éditable car dans le passé, mais vous pouvez revoir ses informations en cliquant sur le bouton ci-dessous.
+    </p>
+    <br>
+    <div class="align-right">
+      <a href="<?= $root; ?>/admin/salons/<?= $salonDetails['id']; ?>/edit" class="btn btn-default">Revoir les informations</a>
+    </div>
+  </div>
+</div>
+<?php
+  }
+?>
 <br> <hr> <br>
+<?php
+  }
+  if(
+    $hasVoted 
+    && $salonDetails['running'] != 1
+    && !(strtotime( $salonDetails['date'] ) < time() )
+  ){
+     $now = new DateTime(); 
+     $then = new DateTime($salonDetails['date']); 
+?>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="intermediate_title">Ce salon commencera le <?= date( 'l jS F \à H\hi', strtotime( $salonDetails['date'] )); ?> <text x="0" y="13" style="cursor: default; user-select: none;display:block; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Soit dans <?= $then->diff($now)->format("%d jours, %h heures and %i minutes"); ?></text></h2>
+      <p>Vous receverez un mail lorsque le chat sera ouvert pour joindre la discussion.</p>
+    </div>
+  </div>
+  <br><hr><br>
 <?php
   }
 ?>
@@ -190,11 +236,11 @@ $gradesCount = count($grades);
 ?>
 </div>
 <script>
+function toBottom(){
+  var $contents = $('.chatbox-current').contents();
+  $contents.scrollTop($contents.height());
+}
 $(function(){
-  function toBottom(){
-    var $contents = $('.chatbox-current').contents();
-    $contents.scrollTop($contents.height());
-  }
   setTimeout(toBottom, 100);
   $('#sendmessage').submit(function(e){
     e.preventDefault();
@@ -255,7 +301,21 @@ $(function(){
 
 });
 </script>
+<?php 
+if((intval($salonDetails['running']) > 0 ) && $hasVoted){
+?>
+<script>
+$(function(){
+  var timer = setInterval(toBottom, 100);
+  $('.chatbox').hover(function(){
+    clearInterval(timer);
+  }, function(){
+    timer = setInterval(toBottom, 100);
+  });
+});
+</script>
 <?php
+}
 }else{
   $_SESSION['feedback'] = 'notallowed';
   echo '<script>window.location.replace("'.$root.'/login");</script>';

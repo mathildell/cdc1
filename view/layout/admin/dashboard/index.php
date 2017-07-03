@@ -38,6 +38,7 @@
   <div class="col-sm-6">
     <h2 class="small_title">
       Répartition des notes attribuées
+      <br><text x="0" y="13" style="cursor: default; user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Notes données par tous les utilisateurs sur l'ensemble des oeuvres du site</text>
     </h2>
     <div id="percent_notes"></div>
   </div>
@@ -46,13 +47,15 @@
 <div class="row">
   <div class="col-sm-6">
     <h2 class="small_title">
-      Répartition des utilisateurs les plus actifs (limité à 5)
+      Répartition des utilisateurs les plus actifs
+      <br><text x="0" y="13" style="cursor: default; user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Les cinq utilisateurs les plus actifs dans les chatrooms des salons</text>
     </h2>
     <div id="most_active_users"></div>
   </div>
   <div class="col-sm-6">
     <h2 class="small_title">
-      Utilisateurs échangeant le plus de livres (5)
+      Utilisateurs échangeant le plus d'oeuvres
+      <br><text x="0" y="13" style="cursor: default; user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Les cinq utilisateurs qui échangent/veulent échanger le plus</text>
     </h2>
     <div id="most_books"></div>
   </div>
@@ -153,9 +156,6 @@ $(function(){
         var data = google.visualization.arrayToDataTable(datae);
 
         var options = {
-          chart: {
-            subtitle: 'Répartition du nombre d\'heures par catégories'
-          },
           height: 300,
           bar: {groupWidth: "90%"},
           legend: { position: "none" }

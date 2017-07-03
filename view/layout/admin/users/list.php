@@ -12,13 +12,13 @@
   <table class="table user-table data-table">
     <thead>
       <tr>
-        <th>
+        <th style="width: 40px;">
           ID
         </th>
         <th>
           Nom
         </th>
-        <th>
+        <th style="width: 20%;">
           Email
         </th>
         <th style="width: 30%;">
@@ -35,7 +35,7 @@
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="word-break: break-all;">
     <?php 
       foreach ($allUsers as $key => $theUser) {
     ?>
@@ -44,9 +44,9 @@
           <?= isset($theUser['id']) ? $theUser['id'] : ''; ?>
         </td>
         <td>
-          <a href="<?= $root; ?>/user/<?= isset($theUser['id']) ? $theUser['id'] : ''; ?>"><?= isset($theUser['username']) ? $theUser['username'] : ''; ?></a>
+          <a href="<?= $root; ?>/user/<?= isset($theUser['id']) ? $theUser['id'] : ''; ?>"><?= isset($theUser['username']) ? ucfirst($theUser['username']) : ''; ?></a>
         </td>
-        <td>
+        <td style="padding-right: 20px;">
           <?= isset($theUser['email']) ? $theUser['email'] : ''; ?>
         </td>
         <td>

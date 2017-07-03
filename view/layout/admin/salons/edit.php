@@ -111,7 +111,9 @@ if(intval($grades[0]['grade_user']) != 0 || intval($grades[1]['grade_user']) != 
       <?php
           $i = 0;
           foreach ($grades as $key => $grade) {
-            if($grade['user_id'] !== $curr_user['id']){
+            if(
+              $grade['user_id'] !== $salon['admin_salon_id']
+            ){
 
               $nmbrmsg = count($salons->getParticip($grade['user_id'], $salon['id']));
           ?>
@@ -143,36 +145,37 @@ if(intval($grades[0]['grade_user']) != 0 || intval($grades[1]['grade_user']) != 
               </div>
             </td>
           <?php
+              if(
+                $key == 0
+              ){
+              ?>
+                <td rowspan="<?= $countg; ?>" style="vertical-align: middle; border:1px solid #ddd;background-color: #fafafa;">
+                  <div style="margin: 20px 50px;">
+                    <ul style="list-style-type: disc;">
+                      <li>
+                        <b>Participation</b>
+                        <ul style="list-style-type: circle; padding-left: 30px;">
+                          <li>Quantité de la prise de parole</li>
+                          <li>Qualité de la prise de parole</li>
+                          <li>Orthographe &amp; expréssion</li>
+                        </ul>
+                      </li>
+                      <br>
+                      <li>
+                        <b>Comportement</b>
+                        <ul style="list-style-type: circle; padding-left: 30px;">
+                          <li>Politesse &amp; bienséance</li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <br>
+                    <p><i style="color: gray;">En aucun cas cette note ne doit se baser sur l'opinion personelle du participant.</i></p>
+                  </div>
+                </td>
+              <?php
+              }
               $i++;
             }
-            if($key == 0){
-            ?>
-              <td rowspan="<?= $countg; ?>" style="vertical-align: middle; border:1px solid #ddd;background-color: #fafafa;">
-                <div style="margin: 20px 50px;">
-                  <ul style="list-style-type: disc;">
-                    <li>
-                      <b>Participation</b>
-                      <ul style="list-style-type: circle; padding-left: 30px;">
-                        <li>Quantité de la prise de parole</li>
-                        <li>Qualité de la prise de parole</li>
-                        <li>Orthographe &amp; expréssion</li>
-                      </ul>
-                    </li>
-                    <br>
-                    <li>
-                      <b>Comportement</b>
-                      <ul style="list-style-type: circle; padding-left: 30px;">
-                        <li>Politesse &amp; bienséance</li>
-                      </ul>
-                    </li>
-                  </ul>
-                  <br>
-                  <p><i style="color: gray;">En aucun cas cette note ne doit se baser sur l'opinion personelle du participant.</i></p>
-                </div>
-              </td>
-            <?php
-            }
-
             ?>
           </tr>
           <?php
@@ -230,7 +233,6 @@ $(function(){
       $(this).parent().find('.form-group[data-grade="'+i+'"]').addClass('active');
     }
   }, function(){
-    console.log(isChecked);
       if(!isChecked){ 
         $(this).parent().find('.form-group[data-grade]').removeClass('active');
       }else{
