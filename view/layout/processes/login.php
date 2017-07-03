@@ -14,5 +14,8 @@
       $_SESSION['feedback'] = "login_error";
       echo '<script> window.location.replace("'.$root.'/login");</script>';
     }
+  }else{
+    $_SESSION['feedback'] = "login_error";
+    echo '<script> window.location.replace("'.$root.'/login");</script>';
   }
 ?>

@@ -1,5 +1,5 @@
 <nav id="main-nav" class="nav row">
-    <form class="form-inline <?= (isset($_GET['p']) && $_GET['p'] === 'search') ? ' active' : ''; ?>" id="searchThrough" action="<? $root; ?>/search" method="POST">
+    <form class="form-inline <?= (isset($_GET['p']) && $_GET['p'] === 'search') ? ' active' : ''; ?>" id="searchThrough" action="<?= $root; ?>/search" method="POST">
         <input type="text" class="form-control" placeholder="Rechercher un livre, un auteur, un thème..." name="search_query"/>
     </form>
     <div class="col-md-5 nav_left">
@@ -53,7 +53,7 @@
 
             </li>
             <li class="col-md-2">
-                <a href="#" id="searchbar" class="icon-search"></a>
+                <a href="#" id="searchbar" class="<?= (isset($_GET['p']) && $_GET['p'] === 'search') ? 'icon-x' : 'icon-search'; ?>"></a>
             </li>
         </ul>
     </div>
@@ -75,13 +75,14 @@
         <p> 
             <?php 
                 $nextSalon = $salons->getNextSalon();
+                if($nextSalon){
                 $salonBook = $salons->getWorkOfSalon($nextSalon["work_id"]); 
                 $salonBookType = $works->getBookType($salonBook['id'])['name'];
                 $salonBookCat = $works->getBookCat($salonBook['id'])['name'];
 
                 ?>
             <?= date( 'l jS F \à H\hi', strtotime( $nextSalon['date'] )); ?> <br/>
-            <a href="<?= $root . '/discover/'.$salonBookType.'/'.$salonBookCat.'/'.$salonBook['id']; ?>"><?= $salonBook['name']; ?> </a> de <?= $salonBook['author']; ?>
+            <a href="<?= $root . '/discover/'.$salonBookType.'/'.$salonBookCat.'/'.$salonBook['id']; ?>"><?= $salonBook['name']; ?> </a> de <?= $salonBook['author']; ?><?php } ?>
         </p>
         <a class="btn btn-primary" href="<?= $root; ?>/salons/<?= $nextSalon['id']; ?>">Participer</a>
     </div>

@@ -11,7 +11,7 @@
 
   <div class="col-sm-10 book-card book-xl">
     <a href="<?= $root . '/discover/' . $discover_type . '/' . $discover_cat . '/' . $book['id']; ?>" class="image-holder">
-       <img src="<?= $book['img_src']; ?>" />
+       <img src="<?= $root.$book['img_src']; ?>" />
     </a>
     <div class="book-info">
        <h3><a href="<?= $root . '/discover/' . $discover_type . '/' . $discover_cat . '/' . $book['id']; ?>"><?= $book['name']; ?></a></h3>

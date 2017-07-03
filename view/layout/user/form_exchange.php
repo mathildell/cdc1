@@ -25,23 +25,6 @@
         <?php
           }
         ?>
-        <!--
-        <select id="books" name="book" class="form-control">
-          <?php 
-          if(isset($_POST['book_id_wanted'])){
-          ?>
-            <option value="<?= intval($_POST['book_id_wanted']); ?>" selected disabled><?= $_POST['book_name_wanted']; ?></option>
-          <?php
-          }else{
-            foreach($works->getAllWhere(['is_deleted' => 0]) as $key => $book){ 
-            ?>
-            <option value="<?= $book['id']; ?>" data-type="<?= $book['type_id']; ?>" data-cat="<?= $book['category_id']; ?>"><?= $book['name']; ?></option>
-          <?php 
-            } 
-          }
-          ?>
-        </select>
-        -->
 
       </div>
     </div>

@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['loggedin']) && $curr_user['isAdmin'] == 1){
   include 'view/layout/includes/breadcrumbs.php';
   $editId = (isset($_GET['id'])) ? $_GET['id'] : false;
   if($editId){
@@ -12,4 +13,8 @@
     $allMessagesCount = count($allMessages);
     include 'list.php';
   }
+}else{
+  $_SESSION['feedback'] = 'notallowed';
+  echo '<script>window.location.replace("'.$root.'/home");</script>';
+}
 ?>

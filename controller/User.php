@@ -187,6 +187,12 @@ class User{
     return $this->db->getCustom($request);
   }
 
+  public function getAllExchanges(){
+    $request = "SELECT * FROM exchanges ORDER BY user_id ASC";
+    return $this->db->getCustomAll($request);
+
+  }
+
   public function getExchanges($id){
     $request = "
       SELECT works.*, exchanges.ex_id, exchanges.status FROM works 

@@ -22,10 +22,20 @@ class Salons{
     return $this->db->remove("salons", [':id' => intval($id) ]);
   }
 
+
+
   public function getAllChatMessagesTime(){
     $request = "
       SELECT chatbox.timestamp
       FROM chatbox";
+    
+    return $this->db->getCustomAll($request);
+  }
+  public function getParticip($user_id,$salon_id){
+    $request = "
+      SELECT id
+      FROM chatbox
+      WHERE chatbox.salon_id = ".$salon_id." AND chatbox.user_id = ".$user_id;
     return $this->db->getCustomAll($request);
   }
 
@@ -45,6 +55,10 @@ class Salons{
     return $this->db->getCustomAll($request);
   }
 
+  public function gradeUsers($data){
+    $req = "UPDATE notes SET grade_user = ".$data['grade']." WHERE user_id = ".$data['user_id']." AND salon_id = ".$data['salon_id'];
+    $this->db->execCustom($req);
+  }
   public function update($data){
     return $this->db->edit("salons", $data);
   }
@@ -76,7 +90,6 @@ class Salons{
     return $this->db->getCustom($request);
   }
   public function registerGrade($data){
-
     return $this->db->save("notes", $data);
   }
   public function getGrades($id){
@@ -84,11 +97,18 @@ class Salons{
       SELECT users.username, 
              users.picture,
              notes.id, 
+             notes.user_id, 
+             notes.grade_user, 
              notes.grade 
       FROM notes 
       JOIN users 
       ON notes.user_id = users.id
       WHERE notes.salon_id = ".$id;
+    return $this->db->getCustomAll($request);
+  }
+
+  public function getAllGrades(){
+    $request = "SELECT grade, user_id FROM notes";
     return $this->db->getCustomAll($request);
   }
 

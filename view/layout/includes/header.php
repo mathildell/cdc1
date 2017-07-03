@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><?= (isset($_GET["p"])) ? ucfirst($_GET["p"]) : "Club des Critiques"; ?> | Club des Critiques</title>
+  <title><?= (isset($_GET["p"]) && !empty($_GET["p"])) ? ucfirst($_GET["p"]) : "Club des Critiques"; ?> | Club des Critiques</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +13,7 @@
   <script src="<?= $root; ?>/view/assets/js/jquery-ui.min.js"></script>
   <script src="<?= $root; ?>/view/assets/js/googlechart.js"></script>
   <script src="<?= $root; ?>/view/assets/sass/vendor/bootstrap/javascripts/bootstrap.min.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="<?= $root; ?>/favicon.ico">
   <script>
   $(function(){
 

@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['loggedin']) && $curr_user['isAdmin'] == 1){
   include 'view/layout/includes/breadcrumbs.php';
   $editMode = (isset($_GET['edit'])) ? true : false;
   $newMode = (isset($_GET['new'])) ? true : false;
@@ -13,4 +14,8 @@
     $countUsers = count($allUsers);
     include 'list.php';
   }
+}else{
+  $_SESSION['feedback'] = 'notallowed';
+  echo '<script>window.location.replace("'.$root.'/home");</script>';
+}
 ?>

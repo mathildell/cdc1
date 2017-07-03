@@ -2,7 +2,7 @@
   <div class="top">
     <div class="row">
       <div class="col-sm-4 identity">
-        <img src="<? $root; ?>/view/assets/img/logo.png">
+        <img src="<?= $root; ?>/view/assets/img/logo.png">
         <?php $footer = $pages->getOne(4); ?>
         <?= ($footer['content']) ? html_entity_decode($footer['content']) : ''?>
       </div>

@@ -6,15 +6,18 @@ if($curr_user['isAdmin'] == 1){
 
   $nbr_person_max = isset($_POST["nbr_person_max"]) ? htmlspecialchars(trim($_POST["nbr_person_max"])) : '';
   $work_id = isset($_POST["book"]) ? intval($_POST["book"]) : '';
+  $admin_user_id = isset($_POST["admin_user_id"]) ? intval($_POST["admin_user_id"]) : '';
 
 
   if(
-    !empty($work_id) &&
+    $work_id > 0 &&
+    $admin_user_id > 0 &&
     !empty($datetime) &&
     !empty($nbr_person_max)
   ){
     $data = [
       ':work_id' => $work_id,
+      ':admin_salon_id' => $admin_user_id,
       ':date' => $datetime,
       ':nbr_person_max' => $nbr_person_max,
       ':work_isdeleted' => 0

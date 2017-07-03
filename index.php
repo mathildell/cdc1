@@ -7,7 +7,7 @@
   require 'model/autoloader.php';
 
   
-  $root =  "http://" . $_SERVER['SERVER_NAME'] . ":8888";
+  $root =  "//" . $_SERVER['SERVER_NAME'] . ":8888";
 
   $user = new User();
   $type = new Type();
@@ -70,8 +70,7 @@
       unset($_SESSION['feedback']);
     }
 
-    if(isset($_GET['p'])){
-
+    if(isset($_GET['p']) && !empty($_GET['p'])){
       $page = strstr($_GET['p'], '/') ? rtrim($_GET['p'], '/') : $_GET['p'];
 
       $discover_type = isset($_GET["type"]) && !empty($_GET["type"]) ? $_GET["type"] : null;
@@ -98,7 +97,9 @@
       echo '</div>';
     }else{
 
-      include $pre . 'home/index.php';
+      echo '<div class="global">';
+        include 'view/layout/home/index.php';
+      echo '</div>';
 
     }
     include 'view/layout/includes/footer.php';

@@ -26,6 +26,9 @@
           Salon en cours
         </th>
         <th>
+          Modérateur du salon
+        </th>
+        <th>
           Actions
         </th>
       </tr>
@@ -34,6 +37,7 @@
     <?php 
       foreach ($salonss as $key => $sal) {
         $workAssoc = $salons->getWorkOfSalon($sal['work_id']);
+        $admin = (intval($sal['admin_salon_id']) > 0) ? $user->get($sal['admin_salon_id']) : null;
         $bookType = $works->getBookType($workAssoc['id'])['name'];
         $bookGenre = $works->getBookCat($workAssoc['id'])['name'];
     ?>
@@ -79,9 +83,20 @@
             <?php
             }
           ?>
+        </td>
 
         <td>
-          <form id="deletesalon_<?= $sal['id']; ?>" action="<?= $root; ?>/processes/deletesalon" method="post" onsubmit="event.preventDefault();"><a class="btn btn-primary" href="<?= $root.'/admin/salons/'.$sal['id'].'/edit'; ?>">edit</a><input type="hidden" name="id" value="<?= $sal['id']; ?>"><input type="submit" class="btn btn-danger" onclick="confirmDelete(<?= $sal['id']; ?>)" value="delete"></form>
+          <?= !empty($admin) ? '<a href="'.$root.'/user/'.$admin['id'].'">'.ucfirst($admin['username']).'</a>' : ''; ?>
+        </td>
+
+        <td>
+          <form id="deletesalon_<?= $sal['id']; ?>" action="<?= $root; ?>/processes/deletesalon" method="post" onsubmit="event.preventDefault();"> 
+          <?php if(strtotime( $sal['date'] ) < time() && $sal['running'] != 1){ ?>
+            <a class="btn btn-default" href="<?= $root.'/admin/salons/'.$sal['id'].'/edit'; ?>">revoir</a> 
+          <?php }else{ ?>
+            <a class="btn btn-primary" href="<?= $root.'/admin/salons/'.$sal['id'].'/edit'; ?>">edit</a> 
+          <?php } ?>
+          <input type="hidden" name="id" value="<?= $sal['id']; ?>"><input type="submit" class="btn btn-danger" onclick="confirmDelete(<?= $sal['id']; ?>)" value="delete"></form>
         </td>
       </tr>
     <?php

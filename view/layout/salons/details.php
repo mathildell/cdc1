@@ -9,8 +9,58 @@ $grades  = $salons->getGrades($setid);
 $gradesCount = count($grades);
 ?>
 <div class="details">
+<?php
+  if($curr_user['id'] === $salonDetails['admin_salon_id']){
+?>
+<div class="row">
+  <div class="col-sm-5"> 
+    <h3 class="small_title">
+      <?= (intval(date('G')) > 4 && intval(date('G')) < 18) ? 'Bonjour '.ucfirst($curr_user['username']) : 'Bonsoir '.ucfirst($curr_user['username']); ?>,
+    </h3>
+    <br>
+    <p>
+      Vous avez été choisis par les administrateurs du Club des Critiques en tant que modérateur de ce salon.
+    </p>
+    <br>
+    <p>
+      De ce fait, vous pouvez éditer sa date et son heure de commencement, le marquer comme "en cours", et éditer l'oeuvre sur laquelle il portera. 
+    </p>
+    <br>
+    <div class="align-right">
+      <a href="<?= $root; ?>/admin/salons/<?= $salonDetails['id']; ?>/edit" class="btn btn-primary">Éditer le salon</a>
+    </div>
+  </div>
+  <div class="col-sm-6 col-sm-offset-1"> 
+    <p>
+      À la fin de ce salon, vous devrez donner une note sur quatre* à chacun de ses participants selon ces critères :
+    </p>
+    <br>
+    <ul style="list-style-type: disc; padding-left: 30px;">
+      <li>
+        <b>Participation</b>
+        <ul style="list-style-type: circle; padding-left: 30px;">
+          <li>Quantité de la prise de parole</li>
+          <li>Qualité de la prise de parole</li>
+          <li>Orthographe</li>
+        </ul>
+      </li>
+      <li>
+        <b>Comportement</b>
+        <ul style="list-style-type: circle; padding-left: 30px;">
+          <li>Politesse &amp; bienséance</li>
+        </ul>
+      </li>
+    </ul>
+    <br>
+    <p><i style="color: gray;">* En aucun cas cette note ne doit se baser sur l'opinion personelle du participant.</i></p>
+  </div>
+</div>
+<br> <hr> <br>
+<?php
+  }
+?>
   <div class="row">
-    <div class="<?= ($hasVoted) ? 'col-sm-9 book-card book-xl' : 'col-sm-4 book-card'; ?>">
+    <div class="<?= ($hasVoted || strtotime( $salonDetails['date'] ) < time() ) ? 'col-sm-9 book-card book-xl' : 'col-sm-4 book-card'; ?>">
       <a href="<?= $root . '/discover/' . $bookType . '/' . $bookCategory . '/' . $bookDetails['id']; ?>" class="image-holder">
          <img src="<?= $bookDetails['img_src']; ?>" />
       </a>
@@ -20,11 +70,11 @@ $gradesCount = count($grades);
          <p class="tags">
             <?= '<a href="'. $root . '/discover/' . $bookType . '">' . ucfirst($bookType) . '</a> › <a href="'. $root . '/discover/' . $bookType . '/' . $bookCategory . '">'. ucfirst($bookCategory) . '</a>'; ?></p>
          <div class="description">
-            <?= $bookDetails['description']; ?>
+            <?= ($hasVoted || strtotime( $salonDetails['date'] ) < time() ) ? $bookDetails['description'] : substr($bookDetails['description'], 0, 120).'...'; ?>
          </div>
       </div>
     </div>
-    <div class="<?= ($hasVoted) ? 'col-sm-3 onlineInChat' : 'col-sm-8 align-center'; ?>">
+    <div class="<?= ($hasVoted || strtotime( $salonDetails['date'] ) < time() ) ? 'col-sm-3 onlineInChat' : 'col-sm-8 align-center'; ?>">
     <?php if($hasVoted || (strtotime($salonDetails['date']) <  time()) ){ ?>
       <h3 class="small_title"><span id="onlineSalons"><?= $gradesCount; ?></span> participant<?= ($gradesCount > 1) ? 's' : ''; ?></h3> 
       <ul class="userList">
@@ -33,7 +83,7 @@ $gradesCount = count($grades);
         ?>
         <li>
           <img src="<?= $root . $grade['picture']; ?>">
-          <h4><a href="<?= $root; ?>/user/<?= $grade['id']; ?>"><?= $grade['username']; ?></a></h4>
+          <h4><a href="<?= $root; ?>/user/<?= $grade['user_id']; ?>"><?= $grade['username']; ?></a></h4>
           <span class="notes align-right" data-grade="<?= $grade['grade']; ?>"></span>
         </li>
         <?php
@@ -98,7 +148,7 @@ $gradesCount = count($grades);
     if(
       ( 
         intval($salonDetails['running']) > 0 
-        || !( strtotime( $salonDetails['date'] ) < time() )
+        //|| !( strtotime( $salonDetails['date'] ) < time() )
       )
       && $hasVoted
       
@@ -171,11 +221,11 @@ $(function(){
   });
 
 
-  var grade, isChecked = false;
   $('#invit').click(function(){
     $('form.invit_friend').slideToggle();
   });
 
+  var grade, isChecked = false;
   $('form.grade .form-group[data-grade] input').change(function(){
     if($(this).is(':checked')){
       isChecked = $(this).parent().data('grade');

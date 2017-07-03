@@ -12,7 +12,6 @@ if($_SESSION['loggedin']){
       !empty($grade)
     ){
     $data = [
-      ':work_id' => $work_id,
       ':user_id' => $user_id,
       ':salon_id' => $salon_id,
       ':grade' => $grade

@@ -49,6 +49,9 @@
           Salon ouvert
         </th>
         <th>
+          Modérateur du salon
+        </th>
+        <th>
           Rejoindre
         </th>
       </tr>
@@ -59,6 +62,7 @@
         $salonss = $salons->getAll();
         foreach ($salonss as $sal) {
           $workAssoc = $salons->getWorkOfSalon($sal['work_id']);
+          $admin = (intval($sal['admin_salon_id']) > 0) ? $user->get($sal['admin_salon_id']) : null;
           $bookType = $works->getBookType($workAssoc['id'])['name'];
           $bookGenre = $works->getBookCat($workAssoc['id'])['name'];
 
@@ -81,6 +85,13 @@
           }else{
             echo '<td><span style="display:none;">'.strtotime( $sal['date'] ).'</span></td>';
           }
+          ?>
+
+        
+          <td>
+            <?= !empty($admin) ? '<a href="'.$root.'/user/'.$admin['id'].'">'.ucfirst($admin['username']).'</a>' : ''; ?>
+          </td>
+          <?php
           if(strtotime( $sal['date'] ) > time() || intval($sal['running']) === 1){
             echo '<td><a class="btn btn-primary" href="'. $root . '/salons/' . $sal['id'] . '">Rejoindre</a></td></tr>';
           }else{

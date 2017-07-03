@@ -16,7 +16,7 @@
   <div class="col-sm-6">
     <div class="form-group">
       <label for="msg_content">Contenu du message</label>
-      <textarea rows="9" name="msg_content" id="msg_content" class="form-control" readonly><?= html_entity_decode($message['msg_content']); ?></textarea>
+      <textarea rows="9" name="msg_content" id="msg_content" class="form-control" readonly><?= htmlspecialchars_decode($message['msg_content']); ?></textarea>
     </div>
   </div>
 </div>

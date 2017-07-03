@@ -16,8 +16,9 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="form-group">
-      <label for="nbr_person_max">Nombre de personnes max.:</label>
-      <input class="form-control" type="number" name="nbr_person_max" value="20">
+      <label for="admin_salon">Administrateur du salon:</label>
+      <input type="text" id="admin_salon" class="form-control autocomplete" placeholder="Commencez à écrire pour des suggestions">
+      <input type="hidden" name="admin_user_id" id="admin_user_id">
     </div>
   </div>
   <div class="col-sm-6">
@@ -25,6 +26,14 @@
       <label for="books">Oeuvre:</label>
       <input type="text" id="books" class="form-control autocomplete" placeholder="Commencez à écrire pour des suggestions">
       <input type="hidden" name="book" id="book_id">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="nbr_person_max">Nombre de personnes max.:</label>
+      <input class="form-control" type="number" name="nbr_person_max" value="20">
     </div>
   </div>
 </div>
@@ -41,11 +50,25 @@ $(function(){
     url: '<?= $root; ?>/processes/worksjson',
     success: function(data){
       var json = JSON.parse(data);
-      $('.autocomplete').catcomplete({
+      console.log(json);
+      $('#books').catcomplete({
         delay: 0,
         source: json,
         select: function (event, ui) {
           $('#book_id').val(ui.item.id); 
+        }
+      });
+    }
+  });
+  $.ajax({
+    url: '<?= $root; ?>/processes/json_users',
+    success: function(data){
+      var json = JSON.parse(data);
+      console.log(json);
+      $('#admin_salon').autocomplete({
+        source: json,
+        select: function (event, ui) {
+          $('#admin_user_id').val(ui.item.id); 
         }
       });
     }

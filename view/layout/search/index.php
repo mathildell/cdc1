@@ -1,4 +1,6 @@
 <?php
+  if(isset($_POST['search_query'])){
+
   $query = htmlspecialchars($_POST['search_query']);
   $searchResults = $works->searchFor($query);
   $resultsNbr = count($searchResults);
@@ -45,3 +47,11 @@
   </p>
 
 </div>
+<?php
+
+  }else{
+?>
+<script>window.location.replace("<?= $root; ?>/discover");</script>
+<?php
+  }
+?>

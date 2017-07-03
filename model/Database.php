@@ -148,6 +148,7 @@ class Database{
     $this->sql->execute();
     return $this->sql->fetch(PDO::FETCH_ASSOC);
   }
+  
   public function execCustom($req){
     $this->sql = $this->db->prepare($req);
     return $this->sql->execute();
