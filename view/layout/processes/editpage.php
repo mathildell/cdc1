@@ -2,14 +2,14 @@
 if($curr_user['isAdmin'] == 1){
     $name = isset($_POST["name"]) ? htmlspecialchars(trim($_POST["name"])) : '';
     $content = isset($_POST["content"]) ? htmlspecialchars(trim($_POST["content"])) : '';
-    //$is_footer_link = isset($_POST["is_footer_link"]) ? intval(trim($_POST["is_footer_link"])) : '';
+    $is_draft = isset($_POST["is_draft"]) ? intval(trim($_POST["is_draft"])) : 0;
     $id = isset($_POST["id"]) ? intval(trim($_POST["id"])) : '';
 
     if(!empty($content) && !empty($name) && $id > 0){
       $data = [
         ':name' => $name,
         ':content' => $content,
-        //':is_footer_link' => $is_footer_link,
+        ':is_draft' => $is_draft,
         ':id' => $id
       ];
     

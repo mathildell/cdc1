@@ -9,12 +9,12 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^processes/(.*)$ index.php?p=processes&action=$1 [L]
 
 
-#if several parameter 2 level ID
+#user messages
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(?!admin|processes)user/([0-9]+)/messages/([0-9]+)$ index.php?p=user&id=$1&messages=messages&msg_id=$2 [L]
 
-#for categories
+#discover part/ type/catégorie/oeuvre
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 
@@ -25,62 +25,56 @@ RewriteRule ^discover/(.*)/(.*)$ index.php?p=discover&type=$1&category=$2 [L]
 RewriteRule ^discover/(.*)$ index.php?p=discover&type=$1 [L]
 
 
-#if several parameter 2 level
-#RewriteCond %{QUERY_STRING} !^p
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^(?!admin|view)(.*)/([0-9]+)$ index.php?p=$1&id=$2 [L]
 
-
-#if several parameter 2 level ID
+#page avec id ex. /user/1
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(?!admin|processes)(.*)/([0-9]+)$ index.php?p=$1&id=$2 [L]
 
-#if several parameter 2 level ID
+#édition du profil
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(?!admin|processes)(.*)/([0-9]+)/edit$ index.php?p=$1&id=$2&edit=edit [L]
 
-#if several parameter 2 level ID
+#messagerie
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(?!admin|processes)(.*)/([0-9]+)/messages$ index.php?p=$1&id=$2&messages=messages [L]
 
 
-
-#standard rewrite w/ 1 level
+#standard page
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(?!admin|view|book|movie|exposition)(.*)$ index.php?p=$1 [L]
 
-#users edit
+#messagerie admin
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/messages/([0-9]+)$ index.php?cat=admin&p=messages&id=$1 [L]
 
-#users edit
+#admin edit
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/(.*)/([0-9]+)/edit$ index.php?cat=admin&p=$1&id=$2&edit=edit [L]
 
-#users new
+#admin new
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/(.*)/new$ index.php?cat=admin&p=$1&new=new [L]
 
-#standard rewrite w/ 1 level
+#admin pages
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/(.*)$ index.php?cat=admin&p=$1 [L]
 
 
-#standard rewrite w/ 1 level
+#admin défaut
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin$ index.php?cat=admin&p=dashboard [L]
 
 
-#if asking directly for type
+#discover type
 RewriteCond %{QUERY_STRING} !^p
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(book|movie|exposition)$ index.php?p=discover&type=$1 [L]

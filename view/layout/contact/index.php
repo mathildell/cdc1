@@ -12,10 +12,10 @@
     if(isset($_SESSION['loggedin'])){
     ?>
     <input type="hidden" value="<?= $curr_user['id']; ?>" name="sender_id">
-    <input type="hidden" value="<?= date('Y-m-d H:i:s'); ?>" name="timestamp">
     <?php
     }
     ?>
+    <input type="hidden" value="<?= date('Y-m-d H:i:s'); ?>" name="timestamp">
       <div class="row">
         <div class="col-sm-6 split-lab">
           <div class="form-group">

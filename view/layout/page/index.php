@@ -3,7 +3,7 @@
     echo '<script>window.location.replace("'.$root.'/home");</script>';
   }else{
     $page = $pages->getOne($setid);
-    if($page){
+    if($page && $page['is_draft'] != 1){
 ?>
   <h1 class="intermediate_title"><?= $page['name']; ?></h1>
   <div class="text-content">

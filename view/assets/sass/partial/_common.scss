@@ -91,6 +91,9 @@ nav .tag.unreadTag{
   margin-right:auto;
   //margin-top: 140px;
   margin-top: 180px;
+  @media (max-width: 1000px) {
+    margin-top: 90px;
+  }
 }
 .align-center{
   text-align: center;

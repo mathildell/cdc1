@@ -97,7 +97,7 @@ $gradesCount = count($grades);
 ?>
   <div class="row">
     <div class="col-sm-12">
-      <h2 class="intermediate_title">Ce salon commencera le <?= date( 'l jS F \à H\hi', strtotime( $salonDetails['date'] )); ?> <text x="0" y="13" style="cursor: default; user-select: none;display:block; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Soit dans <?= $then->diff($now)->format("%d jours, %h heures and %i minutes"); ?></text></h2>
+      <h2 class="intermediate_title">Ce salon commencera le <?= date( 'l jS F \à H\hi', strtotime( $salonDetails['date'] )); ?> <text x="0" y="13" style="cursor: default; user-select: none;display:block; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Soit dans <?= $then->diff($now)->format("%d jours, %h heures et %i minutes"); ?></text></h2>
       <p>Vous receverez un mail lorsque le chat sera ouvert pour joindre la discussion.</p>
     </div>
   </div>
@@ -144,15 +144,41 @@ $gradesCount = count($grades);
           Inviter un ami
         </a>
       </div>
-      <form class="form invit_friend" style="display: none;">
+      <form class="form invit_friend" method="post" style="display: none;">
         <hr>
+        <?php $userFriends = $user->getFriends($curr_user['id']);
+        if(count($userFriends) >= 1){
+        ?><ul class="friendList">
+        <?php
+          foreach ($userFriends as $key => $friend) {
+             ?>
+        <li> 
+          <label>
+            <input type="checkbox" name="invit_friend[]" value="<?= $friend['id']; ?>">
+            <img src="<?= $root . $friend['picture']; ?>">
+            <h4><?= $friend['username']; ?></h4>
+          </label>
+        </li>
+        
+            
+             <?php
+           } ?></ul>
+        <?php
+        }else{
+          echo 'Aucun ami';
+        }
+        ?>
+        <div class="align-right">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+        <!-- 
         <div class="form-group">
           <label for="friend_email">Inviter un ami:&nbsp;&nbsp;&nbsp;</label>
           <input type="email" name="friend_email" id="friend_email" class="form-control" placeholder="Entrez leur adresse email">
         </div>
         <div class="align-right">
           <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
+        </div> -->
       </form>
     <?php 
           }
@@ -269,6 +295,39 @@ $(function(){
 
   $('#invit').click(function(){
     $('form.invit_friend').slideToggle();
+  });
+
+  $('form.invit_friend').submit(function(e){
+    e.preventDefault();
+    var friends_invited = [];
+    $("input:checked", this).each(function() {
+       friends_invited.push($(this).val());
+    });
+    var timestamp = "<?= date('Y-m-d H:i:s'); ?>",
+    userid = "<?= $curr_user['id']; ?>",
+    username = "<?= $curr_user['username']; ?>",
+    useremail = "<?= $curr_user['email']; ?>",
+    salonName = "<?= $bookDetails['name']; ?>",
+    salonId = "<?= $salonDetails['id'] ?>",
+    salonDate = "<?= date( 'l jS F \à H\hi', strtotime( $salonDetails['date'] )); ?>";
+    $.ajax({
+      data: { 'data': friends_invited, 'timestamp': timestamp, 'userid': userid, 'username': username, 'useremail': useremail, 'salonName':salonName,'salonId':salonId,'salonDate':salonDate  },
+      url: "<?= $root; ?>/processes/invitfriends_salon",
+      method: "post",
+      success: function(answ){
+        $('form.invit_friend').parent().append('<span class="all_done"><b>Done!</b></span>');
+        $('form.invit_friend').fadeOut(500);
+        setTimeout(function(){
+          $('form.invit_friend').fadeOut(500);
+        }, 500);
+        setTimeout(function(){
+          $('.all_done').fadeOut(500);
+        }, 1000);
+        setTimeout(function(){
+          $('.all_done').remove();
+        }, 2500);
+      }
+    });
   });
 
   var grade, isChecked = false;

@@ -3,6 +3,9 @@
   header{
     overflow: hidden;
     height: calc(100vh - (140px + 5vw));
+    @media (max-width: 1000px) {
+      height: calc(100vh - 70px);
+    }
     width: 90vw;
     margin: 0 auto 5vw;
     position: relative;
@@ -27,6 +30,10 @@
       position: absolute;
       left: 0px;
       bottom: 0px;
+
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
     }
   }
   section{
@@ -34,8 +41,10 @@
   }
   .concept{
     .text-content{
-      column-count: 2;
-      column-gap: 90px;
+      @media (min-width: 1000px) {
+        column-count: 2;
+        column-gap: 90px;
+      }
       font-size: ($font-size + 2px);
       p, .quote{
         margin-bottom: 20px;

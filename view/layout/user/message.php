@@ -24,7 +24,7 @@
   <div class="col-sm-6">
     <div class="form-group">
       <label for="msg_content">Contenu du message</label>
-      <textarea rows="9" name="msg_content" id="msg_content" class="form-control" readonly><?= htmlspecialchars_decode($msg['msg_content']); ?></textarea>
+      <div style="height:186px;overflow:auto;" name="msg_content" id="msg_content" class="form-control" readonly><?= htmlspecialchars_decode(stripslashes($msg['msg_content'])); ?></div>
     </div>
   </div>
 </div>

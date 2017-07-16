@@ -4,14 +4,15 @@
   background-color: #fff;
   line-height: 50px;
 
+    width: 100%;
   position: fixed;
-  width: 100%;
   left: 0px;
   z-index: 2;
 
 
   &#main-nav{
     top: 0px;
+
     #searchThrough{
       position:absolute;
       top:0px;
@@ -30,6 +31,9 @@
         width: 90vw;
         opacity: 1;
         visibility: visible;
+      }
+      @media (max-width: 1000px) {
+        padding-top: 15px;
       }
       input{
         width: 100%;
@@ -60,13 +64,6 @@
         @extend %valign;
         font-size: 18px;
         vertical-align: -5px;
-      }
-      #searchbar{
-        font-size: 18px;
-        position: relative;
-        z-index: 4;
-        display: block;
-        margin-top: 6px;
       }
       .dropdown{
         .dropdown-me{
@@ -107,6 +104,10 @@
     }
     
     .nav_center{
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
       img{
         display: block;
         margin: 0 auto;
@@ -114,6 +115,67 @@
         max-height: 50px; 
       }
 
+    }
+
+    #searchbar{
+      font-size: 18px;
+      position: relative;
+      z-index: 4;
+      display: block;
+      position: absolute;
+      right: calc(5vw + 10px);
+      top: 15px;
+    }
+    .responsiveMenu,.responsiveMenuClose{
+      display: none;
+    }
+    @media (max-width: 1000px) {
+      .responsiveMenu{
+        display: block;
+        border: none;
+        background-color: transparent;
+        height: 50px;
+        margin-left: 15px;
+        color: $dark-green;
+      }
+      .responsiveMenuClose{
+        display: block;
+      }
+      #searchbar{
+        top: 10px;
+      }
+      .responsiveMenu, #searchbar{
+        font-size: 30px;
+      }
+      .responsiveListLinks{
+        .responsiveMenuClose{
+          position: fixed;
+          top: 5vw;
+          right: 5vw;
+          border: none;
+          background: transparent;
+          font-size: 30px;
+          color: $dark-green;
+        }
+        background: #fff;
+        position: fixed;
+        padding: 5vw;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 15px;
+        z-index: 5;
+        ul.row li, ul.row{
+          text-align: left!important;
+        }
+        display: none;
+      }
+      .dropdown-me{
+        display: none;
+      }
+    }
+    @media (max-width: 1000px) {
+      box-shadow: 0px 0px 10px rgba($dark-green, 0.7);
     }
     
   }
@@ -143,6 +205,9 @@
     p{
       line-height: 1.3;
 
+    }
+    @media (max-width: 1000px) {
+      display: none;
     }
   }
 }

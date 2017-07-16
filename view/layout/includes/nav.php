@@ -1,62 +1,64 @@
-<nav id="main-nav" class="nav row">
+<nav id="main-nav" class="nav">
     <form class="form-inline <?= (isset($_GET['p']) && $_GET['p'] === 'search') ? ' active' : ''; ?>" id="searchThrough" action="<?= $root; ?>/search" method="POST">
         <input type="text" class="form-control" placeholder="Rechercher un livre, un auteur, un thème..." name="search_query"/>
     </form>
-    <div class="col-md-5 nav_left">
-        <ul class="row">
-            <li class="col-md-4">
-                <a href="<?= $root; ?>/home" <?= (!isset($_GET['cat']) && $_GET["p"] === "home") ? 'class="active"' : ''; ?>>Accueil</a>
-            </li>
-            <li class="col-md-4">
-                <a href="<?= $root; ?>/discover" <?= (!isset($_GET['cat']) && $_GET["p"] === "discover") ? 'class="active"' : ''; ?>>Découvrir</a>
-            </li>
-            <li class="col-md-4">
-                <a href="<?= $root; ?>/salons" <?= (!isset($_GET['cat']) && $_GET["p"] === "salons") ? 'class="active"' : ''; ?>>Salons</a>
-            </li>
-
-        </ul>
-    </div>
+    <button class="responsiveMenu icon-bars"></button>
     <div class="col-md-2 nav_center">
         <a href="<?= $root; ?>/home"><img src="<?= $root; ?>/view/assets/img/logo.png" /></a>
     </div>
-    <div class="col-md-5 nav_right">
-        <ul class="row">
-            <li class="col-md-4">
-                <a href="<?= $root; ?>/contact" <?= (!isset($_GET['cat']) && $_GET["p"] === "contact") ? 'class="active"' : ''; ?>>Contact</a>
-            </li>
-            <li class="col-md-6 dropdown align-center">
-            <?php if(isset($curr_user)){
-                ?>
-                <div class="dropdown-me">
-                    <a href="<?= $root.'/user/'.$curr_user['id'].'/edit'; ?>">Éditer le profil</a>
-                    <a href="<?= $root.'/user/'.$curr_user['id'].'/messages'; ?>">Messages <?= count($unreads) > 0 ? ' <span class="tag unreadTag">'.count($unreads).' non-lu</span>' : ''; ?></a>
-                    <?php if(intval($curr_user['isAdmin']) == 1){
+    <div class="responsiveListLinks row">
+        <div class="col-md-5 col-sm-12 nav_left">
+            <ul class="row">
+                <li class="col-md-4 col-sm-12">
+                    <a href="<?= $root; ?>/home" <?= (!isset($_GET['cat']) && $_GET["p"] === "home") ? 'class="active"' : ''; ?>>Accueil</a>
+                </li>
+                <li class="col-md-4 col-sm-12">
+                    <a href="<?= $root; ?>/discover" <?= (!isset($_GET['cat']) && $_GET["p"] === "discover") ? 'class="active"' : ''; ?>>Découvrir</a>
+                </li>
+                <li class="col-md-4 col-sm-12">
+                    <a href="<?= $root; ?>/salons" <?= (!isset($_GET['cat']) && $_GET["p"] === "salons") ? 'class="active"' : ''; ?>>Salons</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-5 col-sm-12 nav_right col-md-offset-2">
+            <ul class="row">
+                <li class="col-md-4 col-sm-12">
+                    <a href="<?= $root; ?>/contact" <?= (!isset($_GET['cat']) && $_GET["p"] === "contact") ? 'class="active"' : ''; ?>>Contact</a>
+                </li>
+                <li class="col-md-6 col-sm-12 dropdown align-center">
+                <?php if(isset($curr_user)){
                     ?>
-                    <a href="<?= $root; ?>/admin">Admin <?= (count($unreadsAdmin) > 0) ? ' <span class="tag unreadTag">'.count($unreadsAdmin).' non-lu</span>' : ''; ?></a>
-                    <?php
-                    } ?>
-                </div>
-            <?php
-            }
-                if(!isset($_SESSION['loggedin'])){
-            ?>
-                <a href="<?= $root.'/login'?>" <?= ($_GET["p"] === "login") ? 'class="active"' : ''; ?>>Compte</a>
-            <?php
-                }else{
-            ?>
-
-                <a href="<?= $root.'/user/'.$curr_user['id']; ?>" <?= ($_GET["p"] === "user" && $_GET['id'] === $curr_user['id']) ? 'class="active"' : ''; ?>> <?= $curr_user['username']; ?><?= (count($unreads) > 0 || ( isset($unreadsAdmin) && count($unreadsAdmin) > 0)) ? ' <span class="unreadNotif icon-mail"></span>' : ''; ?></a>
-                | <a href="<?= $root; ?>/processes/logout" class="logout icon-locker-streamline-unlock"></a>
-            <?php
+                    <div class="dropdown-me">
+                        <a href="<?= $root.'/user/'.$curr_user['id'].'/edit'; ?>">Éditer le profil</a>
+                        <a href="<?= $root.'/user/'.$curr_user['id'].'/messages'; ?>">Messages <?= count($unreads) > 0 ? ' <span class="tag unreadTag">'.count($unreads).' non-lu</span>' : ''; ?></a>
+                        <?php if(intval($curr_user['isAdmin']) == 1){
+                        ?>
+                        <a href="<?= $root; ?>/admin">Admin <?= (count($unreadsAdmin) > 0) ? ' <span class="tag unreadTag">'.count($unreadsAdmin).' non-lu</span>' : ''; ?></a>
+                        <?php
+                        } ?>
+                    </div>
+                <?php
                 }
-            ?>
+                    if(!isset($_SESSION['loggedin'])){
+                ?>
+                    <a href="<?= $root.'/login'?>" <?= ($_GET["p"] === "login") ? 'class="active"' : ''; ?>>Compte</a>
+                <?php
+                    }else{
+                ?>
 
-            </li>
-            <li class="col-md-2">
-                <a href="#" id="searchbar" class="<?= (isset($_GET['p']) && $_GET['p'] === 'search') ? 'icon-x' : 'icon-search'; ?>"></a>
-            </li>
-        </ul>
+                    <a href="<?= $root.'/user/'.$curr_user['id']; ?>" <?= ($_GET["p"] === "user" && $_GET['id'] === $curr_user['id']) ? 'class="active"' : ''; ?>> <?= $curr_user['username']; ?><?= (count($unreads) > 0 || ( isset($unreadsAdmin) && count($unreadsAdmin) > 0)) ? ' <span class="unreadNotif icon-mail"></span>' : ''; ?></a>
+                    | <a href="<?= $root; ?>/processes/logout" class="logout icon-locker-streamline-unlock"></a>
+                <?php
+                    }
+                ?>
+
+                </li>
+            </ul>
+        </div>
+        <button class="responsiveMenuClose icon-x"></button>
     </div>
+    <a href="#" id="searchbar" class="<?= (isset($_GET['p']) && $_GET['p'] === 'search') ? 'icon-x' : 'icon-search'; ?>"></a>
 </nav>
 
 <nav id="secondary-nav" class="nav">

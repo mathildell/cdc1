@@ -1,4 +1,5 @@
 <?php
+if(isset($_POST["email"])){
   $email = htmlspecialchars(trim($_POST["email"]));
   if(isset($email) && !empty($email)){
     $pwd = uniqid();
@@ -16,3 +17,10 @@
   }
 ?>
 <script>window.location.replace("<?= $root; ?>/home");</script>
+<?php }else{
+  $_SESSION['feedback'] = 'notallowed';
+?>
+<script>window.location.replace("<?= $root; ?>/home");</script>
+<?php
+}
+?>

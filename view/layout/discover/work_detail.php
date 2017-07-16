@@ -15,7 +15,7 @@
     </a>
     <div class="book-info">
        <h3><a href="<?= $root . '/discover/' . $discover_type . '/' . $discover_cat . '/' . $book['id']; ?>"><?= $book['name']; ?></a></h3>
-       <p>de <a href="#"><?= $book['author']; ?></a></p>
+       <p>de <a><?= $book['author']; ?></a></p>
        <p class="tags">
           <?= '<a href="'. $root . '/discover/' . $discover_type . '">' . ucfirst($discover_type) . '</a> › <a href="'. $root . '/discover/' . $discover_type . '/' . $discover_cat . '">'. ucfirst($discover_cat) . '</a>'; ?></p>
        <div class="description">

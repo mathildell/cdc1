@@ -15,7 +15,7 @@ class Page{
     return $this->db->get("custom_items", [':id' => $id]);
   }
   public function getPages(){
-    return $this->db->getAllWhere("custom_items", [':is_footer_link' => 1]);
+    return $this->db->getAllWhere("custom_items", [':is_footer_link' => 1, ':is_draft' => 0]);
   }
   public function edit($data){
     return $this->db->edit("custom_items", $data);

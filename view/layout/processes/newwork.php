@@ -8,6 +8,8 @@
     $spotlight = isset($_POST["spotlight"]) ? intval($_POST["spotlight"]) : '';
     $description = isset($_POST["description"]) ? nl2br(htmlspecialchars(trim($_POST["description"]))) : '';
     $amazon = isset($_POST["url_amazon"]) ? htmlspecialchars(trim($_POST["url_amazon"])) : '';
+    $datePublish = isset($_POST["datePublish"]) ? htmlspecialchars(trim($_POST["datePublish"])) : '';
+
     $file = $_FILES['img_src'];
     $imageFileType = pathinfo(basename($file["name"]),PATHINFO_EXTENSION);
 
@@ -35,7 +37,8 @@
         ':img_src' => $path,
         ':description' => $description,
         ':url_amazon' => $amazon,
-        ':spotlight' => $spotlight
+        ':spotlight' => $spotlight,
+        ':published_date' => $datePublish
       ];
       $update = $works->new($data);
       if($update){

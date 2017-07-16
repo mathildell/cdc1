@@ -1,5 +1,6 @@
 <?php
-  if($_POST["userid"] === $curr_user['id'] ||  $curr_user['isAdmin'] == 1){
+if(isset($_POST)){
+  if($_POST["userid"] == $curr_user['id']){
     $userid = htmlspecialchars(trim($_POST["userid"]));
     $exchange_nbr = intval($_POST["count_exchanges"]);
 
@@ -59,4 +60,10 @@
 <script>window.location.replace("<?= $root; ?>/home");</script>
 <?php
   }
+}else{
+  $_SESSION['feedback'] = 'notallowed';
+?>
+<script>window.location.replace("<?= $root; ?>/home");</script>
+<?php
+}
 ?>

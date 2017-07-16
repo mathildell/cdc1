@@ -2,3 +2,4 @@
 .idea/
 *.xml
 .DS_Store
+config/db_config_prod.php

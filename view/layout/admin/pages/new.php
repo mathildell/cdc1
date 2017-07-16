@@ -6,17 +6,17 @@
         <input type="text" id="name" name="name" class="form-control">
       </div>
     </div>
-    <!--
+    
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="is_footer_link">Lien dans footer:</label>
-        <select name="is_footer_link" id="is_footer_link" class="form-control">
-          <option value="0" disabled>Non</option>
-          <option value="1" selected disabled>Oui</option>
+        <label for="is_draft">Brouillon:</label>
+        <select name="is_draft" id="is_draft" class="form-control">
+          <option value="0">Non</option>
+          <option value="1" selected>Oui</option>
         </select>
       </div>
     </div>
-    -->
+
   </div>
   <div class="row">
     <div class="col-sm-12">
@@ -42,7 +42,7 @@ $(function(){
     $.ajax({
       url: '<?= $root; ?>/processes/createpage',
       method: 'POST',
-      data: {'name': $('#name').val(), 'content': $('#content').html() },
+      data: {'name': $('#name').val(), 'content': $('#content').html(), 'is_draft': $('#is_draft').val() },
       success: function(){
         window.location.href = '<?= $root; ?>/admin/pages';
       }

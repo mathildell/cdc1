@@ -24,7 +24,7 @@
           Contenu
         </th>
         <th>
-          Est une page complète
+          Brouillon
         </th>
         <th>
           Actions
@@ -46,7 +46,7 @@
           <?= isset($page['content']) ? substr($page['content'], 0, 50).'...' : ''; ?>
         </td>
         <td>
-          <?= (intval($page['is_footer_link']) === 1) ? 'Oui' : 'Non'; ?>
+          <?= (intval($page['is_draft']) === 1) ? 'Brouillon' : 'Publié'; ?>
         </td>
         <td>
 

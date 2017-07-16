@@ -16,6 +16,17 @@
   <link rel="shortcut icon" type="image/x-icon" href="<?= $root; ?>/favicon.ico">
   <script>
   $(function(){
+    if(window.innerWidth <= 1000){
+      <?php if(isset($_SESSION['loggedin']) && $curr_user['isAdmin'] == 1){ ?>
+        $('nav#main-nav .nav_right .row').append('<li class="col-md-4 col-sm-12"><a href="<?= $root; ?>/admin" <?= $root; ?>>Administration <?= (count($unreadsAdmin) > 0) ? ' <span class="tag unreadTag">'.count($unreadsAdmin).' non-lu</span>' : ''; ?></a></li>');
+      <?php } ?>
+      $('.responsiveMenu').click(function(){
+        $('.responsiveListLinks').fadeIn();
+      });
+      $('.responsiveMenuClose').click(function(){
+        $('.responsiveListLinks').fadeOut();
+      });
+    }
 
     $( 'input.datepicker').datepicker({
       'dateFormat': 'yy-mm-dd',
@@ -47,6 +58,7 @@
 
 
     var table = $('.data-table').DataTable({
+    responsive: true,
       "order": [[ 0, "desc" ]],
       <?php 
         if(isset($_GET['p'])){

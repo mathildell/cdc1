@@ -1,42 +1,32 @@
 <?php
-if($curr_user['isAdmin'] > 0){
+if(isset($curr_user) && intval($curr_user['isAdmin']) > 0){
   if(isset($_POST)){
+
+    include 'simple_html_dom.php';
+
     $url = $_POST['url'];
-    $html = file_get_contents($url);
-    $doc = new DOMDocument();
-    @$doc->loadHTML($html);
 
-    $image = $doc->getElementById('imgBlkFront')->getAttribute('src');
-    $titre = $doc->getElementById('productTitle')->textContent;
-    $author = $doc->getElementById('byline')->getElementsByTagName('span')[0]->getElementsByTagName('span')[0]->childNodes[0]->textContent;
+    $html = file_get_html($url);
+    $img = (!empty($html->find('img.frontImage'))) ? $html->find('img.frontImage')[0]->src : "";
 
-    $catType = $doc->getElementById('SalesRank')->getElementsByTagName('ul')[0]->getElementsByTagName('li')[0]->getElementsByTagName('a');
-    $catTypeCount = ($catType->length) - 1;
+    $title = (!empty($html->find('#title > span'))) ? $html->find('#title > span')[0]->plaintext : ""; 
 
-    foreach ($catType as $key => $value) {
-      if($key === 0){
-        $type = $value->textContent;
-        if(substr($type, -1) === 's'){
-          $type = strtolower(rtrim($type, 's'));
-        }
-      }else if($key === $catTypeCount){
-        $category = $value->textContent;
-        if(substr($category, -1) === 's'){
-          $category = strtolower(rtrim($category, 's'));
-        }
-      }
+    $author = (!empty($html->find('#byline > .author .a-link-normal'))) ? $html->find('#byline > .author .a-link-normal')[0]->plaintext : ""; 
+    
+    if(strpos($author, 'Consulter la page') !== false){
+      $author = str_replace(array("Consulter la page ", " d'Amazon"), "", $author);
     }
-    $data = [
-      "src" => urldecode(trim($image)),
-      "titre" => trim($titre),
-      "author" => trim($author),
-      "type" => trim($type),
-      "category" => trim($category)
 
+
+    $data = [
+      "src" => urldecode(trim($img)),
+      "titre" => trim($title),
+      "author" => trim($author),
+      "description" => ""
     ];
+
 
     echo json_encode($data);
 
   }
-  
 }

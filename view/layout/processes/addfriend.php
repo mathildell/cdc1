@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['loggedin']) && isset($_POST)){
   $friend_id = isset($_POST["friend_id"]) ? intval(trim($_POST["friend_id"])) : '';
   $userid = isset($curr_user['id']) ? intval($curr_user['id']) : '';
   if(
@@ -20,3 +21,7 @@
     $_SESSION['feedback'] = 'addfriend_failure';
   }
   echo '<script>window.location.replace("'.$root.'/user/'.$friend_id.'");</script>';
+}else{
+  $_SESSION['feedback'] = 'notallowed';
+  echo '<script>window.location.replace("'.$root.'/home");</script>';
+}

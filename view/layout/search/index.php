@@ -10,7 +10,7 @@
   <h2 class="medium_title">
     Vous avez cherché "<i><?= $query; ?></i>"
   </h2>
-  <p class="nmbr_search"><?= $resultsNbr; ?> résultats</p>
+  <p class="nmbr_search"><?= $resultsNbr; ?> résultat<?= ($resultsNbr != 1) ? 's' : ''; ?></p>
   <p>
     <?php 
       if(count($searchResults) > 0){
@@ -28,7 +28,7 @@
               </a>
               <div class="book-info">
                  <h3><a href="#"><?= $book['name']; ?></a></h3>
-                 <p>de <a href="#"><?= $book['author']; ?></a></p>
+                 <p>de <a><?= $book['author']; ?></a></p>
                  <p class="tags">
                     <?= '<a href="'. $root . '/discover/' . $book_type['name'] . '">' . ucfirst($book_type['name']) . '</a> › <a href="'. $root . '/discover/' . $book_type['name'] . '/' . $book_cat['name'] . '">'. ucfirst($book_cat['name']) . '</a>'; ?></p>
               </div>

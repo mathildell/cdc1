@@ -38,7 +38,7 @@
             </a>
             <div class="book-info">
                <h3><a href="#"><?= $book['name']; ?></a></h3>
-               <p>de <a href="#"><?= $book['author']; ?></a></p>
+               <p>de <a><?= $book['author']; ?></a></p>
                <p class="tags">
                   <?= '<a href="'. $root . '/discover/' . $book_type . '">' . ucfirst($book_type) . '</a> › <a href="'. $root . '/discover/' . $book_type . '/' . $book_cat . '">'. ucfirst($book_cat) . '</a>'; ?></p>
             </div>

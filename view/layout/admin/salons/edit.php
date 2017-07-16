@@ -23,7 +23,7 @@
   </div>
 </div>
 <?php } 
-$salonPast = (strtotime( $salon['date'] ) < time() && $salon['running'] != 1) ? true : false;
+$salonPast = (strtotime( $salon['date'] ) < time() && $salon['running'] != 1 && $curr_user['isAdmin'] != 1) ? true : false;
 ?>
 <div class="row">
   <div class="col-sm-6">
@@ -146,7 +146,8 @@ if(intval($grades[0]['grade_user']) != 0 || intval($grades[1]['grade_user']) != 
             </td>
           <?php
               if(
-                $key == 0
+                ($salon['admin_salon_id'] == 1 && $key == 2)
+                || ($salon['admin_salon_id'] != 1 && $key == 1)
               ){
               ?>
                 <td rowspan="<?= $countg; ?>" style="vertical-align: middle; border:1px solid #ddd;background-color: #fafafa;">

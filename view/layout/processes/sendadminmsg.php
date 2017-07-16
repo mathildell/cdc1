@@ -1,4 +1,5 @@
 <?php
+if(isset($_POST)){
   $sender_name = htmlspecialchars(trim($_POST["sender_name"]));
   $sender_email = htmlspecialchars(trim($_POST["sender_email"]));
   $sender_subject = htmlspecialchars(trim($_POST["sender_subject"]));
@@ -39,3 +40,10 @@
     $_SESSION['feedback'] = 'sendmsg_failure';
     echo '<script>window.location.replace("'.$root.'/contact");</script>';
   }
+}else{
+  $_SESSION['feedback'] = 'notallowed';
+?>
+<script>window.location.replace("<?= $root; ?>/home");</script>
+<?php
+}
+?>

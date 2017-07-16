@@ -12,10 +12,18 @@
 
     <div class="book-info">
       <div class="form-group">
+        <label for="helper">Pré-remplissage :</label>
+        <select name="helper" id="helper" class="form-control">
+          <option value="0">Google books</option>
+          <option value="1">Amazon</option>
+          <option value="2" selected>Aucun</option>
+        </select>
+      </div>
+      <div class="form-group" id="url_amazon_cont" style="display: none">
         <label for="url_amazon">URL Amazon:</label>
         <div class="input-group basic">
           <input class="form-control" id="url_amazon" name="url_amazon" type="text">
-          <span class="input-group-addon"><i class="icon-search"></i></span>
+          <span class="input-group-addon"><i class="icon-spinner"></i></span>
         </div>
       </div>
       <div class="form-group">
@@ -26,6 +34,11 @@
         <label for="author">Auteur:</label>
         <input class="form-control" id="author" name="author" type="text">
       </div>
+      <div class="form-group">
+        <label for="datePublish">Date de publication:</label>
+        <input class="form-control datepicker" type="text" id="datePublish" name="datePublish">
+      </div>
+
       <div class="form-group">
         <label for="type">Type:</label>
         <select name="type_id" class="form-control">
@@ -58,7 +71,6 @@
         <textarea class="form-control" name="description" id="description"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Envoyer</button>
-      <a class="btn btn-primary" href="<?= $root; ?>/admin/salons/new">Organiser un salon</a>
     </div>
   </div>
 
@@ -72,9 +84,35 @@ $(function(){
       readURL(this);
   });
 
+  var hel_nb = 2;
+  $('#helper').change(function(){
+    hel_nb = $(this).val();
+    if(hel_nb == 0){
+      //google books
+      if($('#url_amazon_cont').not(':hidden')){
+        $('#url_amazon_cont').hide().find('input').val("");
+      }
+    }else if(hel_nb == 1){
+      //amazon
+      if($('#url_amazon_cont').is(':hidden')){
+        $('#url_amazon_cont').show();
+      }
+      if($('#name').data('ui-autocomplete') != undefined){
+        $('#name').autocomplete("destroy");
+      }
+    }else{
+      if($('#url_amazon_cont').not(':hidden')){
+        $('#url_amazon_cont').hide().find('input').val("");
+      }
+      if($('#name').data('ui-autocomplete') != undefined){
+        $('#name').autocomplete("destroy");
+      }
+    }
+  });
+
   $('#url_amazon').change(function(){
     data = $(this).val();
-    if(data.length > 0){
+    if(data.length > 0 && hel_nb == 1){
       $('#url_amazon').parent().removeClass('basic');
       $.ajax({
         url: '<?= $root; ?>/processes/readAmazon',
@@ -84,6 +122,7 @@ $(function(){
           var json = JSON.parse(answer);
           $('#name').val(json['titre']);
           $('#author').val(json['author']);
+          $('#description').val(json['description']);
           $('#img_src_amazon').val(json['src']);
           $('#uploadImage').attr({'src': json['src']});
           $('#url_amazon').parent().addClass('basic');
@@ -96,6 +135,48 @@ $(function(){
     }
   });
 
+  $('#name').change(function(){
+    var val = $.trim($('#name').val());
+    if(val.length > 0 && hel_nb == 0){
+      string = val.replace(/ /g, '+').toLowerCase();
+
+      $.ajax({
+        url: 'https://www.googleapis.com/books/v1/volumes?q='+string,
+        success: function(data){
+          //var json = JSON.parse(data);
+          var autocompleter = [];
+          $.each(data.items, function(i, dug){
+            console.log(i, dug.volumeInfo.title);
+
+            if(typeof dug.volumeInfo.subtitle !== "undefined"){
+              autocompleter.push({"id": i, "category" : dug.volumeInfo.subtitle, "label" : val + " : "+dug.volumeInfo.title });
+            }else{
+              autocompleter.push({ "id": i, "label" : val + " : "+dug.volumeInfo.title, "category": "" });
+            }
+            
+          });
+
+          $('#name').catcomplete({
+              delay: 0,
+              source: autocompleter,
+              select: function (event, ui) {
+                var book = data.items[ui.item.id].volumeInfo;
+                $('#name').val(ui.item.label);
+                $('#author').val(book.authors[0]);
+                $('#description').val(book.description);
+                $('#img_src_amazon').val(book.imageLinks.thumbnail);
+                $('#uploadImage').attr({'src': book.imageLinks.thumbnail});
+                $('#datePublish').val(book.publishedDate);
+                //$('#book_id').val(ui.item.id); 
+              }
+            });
+
+        }
+
+
+      });
+    }
+  });
 
 
 });

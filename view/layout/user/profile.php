@@ -68,7 +68,7 @@ if($count_exchanges > 0){
       </a>
       <div class="book-info">
          <h3><a href="<?= $root . '/discover/' . $book_type['name']  . '/' . $book_cat['name'].'/'.$book['id']; ?>"><?= $book['name']; ?></a></h3>
-         <p>de <a href="#"><?= $book['author']; ?></a></p>
+         <p>de <a><?= $book['author']; ?></a></p>
          <p class="status">Status: <span><?= $user->getExStatus($book['status']); ?></span></p>
       </div>
     </div>

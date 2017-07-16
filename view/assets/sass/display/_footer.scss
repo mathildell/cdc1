@@ -5,6 +5,10 @@
   font-size: ($font-size - 2px);
   .footer_title{
     font-size: ($font-size + 2px);
+
+    @media (max-width: 1000px) {
+      margin-top: 20px;
+    }
   }
   .top{
     .identity{
@@ -12,11 +16,17 @@
         height: 60px;
         display: block;
         margin-bottom: 20px;
+        @media (max-width: 1000px) {
+          margin-bottom:  10px;
+        }
       }
     }
     .follow{
       ul{
         margin-top: 30px;
+        @media (max-width: 1000px) {
+          margin-top:  10px;
+        }
         li{
           font-size: ($font-size + 4px);
           @extend %valign;
@@ -30,6 +40,12 @@
     .newsletter{
       form{
         margin-top: 30px;
+        @media (max-width: 1000px) {
+          margin-top:  10px;
+          input{
+            margin-bottom: 10px;
+          }
+        }
       }
     }
   }
@@ -44,9 +60,16 @@
     li{
       @extend %valign;
       margin-right: 20px;
+      @media (max-width: 1000px) {
+        display: block;
+        margin-right: 0px;
+      }
     }
     .row div{
       text-align: right;
+      @media (max-width: 1000px) {
+        text-align: left;
+      }
     }
   }
 }

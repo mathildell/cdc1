@@ -19,6 +19,11 @@
         <label for="author">Auteur:</label>
         <input class="form-control" id="author" name="author" type="text" value="<?= $book['author']; ?>">
       </div>
+
+      <div class="form-group">
+        <label for="datePublish">Date de publication:</label>
+        <input class="form-control datepicker" type="text" id="datePublish" name="datePublish" value="<?= ( !empty( $book['published_date'] ) ) ? $book['published_date'] : ''; ?>">
+      </div>
       <div class="form-group">
         <label for="type">Type:</label>
         <select name="type_id" id="type" class="form-control">

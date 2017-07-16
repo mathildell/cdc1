@@ -6,7 +6,7 @@
   padding: 10px 20px;
 
   b, a, a:not(:last-child):after{
-    @extend %valign;
+    display: inline;
   }
 
   b{
