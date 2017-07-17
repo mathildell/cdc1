@@ -20,8 +20,7 @@ if(isset($_POST)){
       $_SESSION['feedback'] = 'rmfriend_failure';
     }
     echo '<script>window.location.replace("'.$root.'/user/'.$friend_id.'");</script>';
-  }
-}else{
+  }else{
   $_SESSION['feedback'] = 'notallowed';
   echo '<script>window.location.replace("'.$root.'/home");</script>';
 }

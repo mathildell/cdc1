@@ -1,4 +1,3 @@
-
 <?php
   //include 'view/layout/includes/breadcrumbs.php';
   $book = isset($_GET["id"]) ? $works->getOne($_GET["id"]) : null;
@@ -19,7 +18,7 @@
        <p class="tags">
           <?= '<a href="'. $root . '/discover/' . $discover_type . '">' . ucfirst($discover_type) . '</a> › <a href="'. $root . '/discover/' . $discover_type . '/' . $discover_cat . '">'. ucfirst($discover_cat) . '</a>'; ?></p>
        <div class="description">
-          <?= $book['description']; ?>
+          <?= htmlspecialchars_decode($book['description']); ?>
        </div>
        <?php
         if(!empty($book['url_amazon'])){
@@ -92,4 +91,3 @@ if(isset($_SESSION['loggedin'])){
   }
 }
 ?>
-
