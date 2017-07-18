@@ -92,7 +92,8 @@
         <td>
           <form id="deletesalon_<?= $sal['id']; ?>" action="<?= $root; ?>/processes/deletesalon" method="post" onsubmit="event.preventDefault();"> 
           <?php if(strtotime( $sal['date'] ) < time() && $sal['running'] != 1){ ?>
-            <a class="btn btn-default" href="<?= $root.'/admin/salons/'.$sal['id'].'/edit'; ?>">revoir</a> 
+            <a class="btn btn-default" href="<?= $root.'/salons/'.$sal['id']; ?>">Chat</a>
+            <a class="btn btn-default" href="<?= $root.'/admin/salons/'.$sal['id'].'/edit'; ?>">Paramètres</a> 
           <?php }else{ ?>
             <a class="btn btn-primary" href="<?= $root.'/admin/salons/'.$sal['id'].'/edit'; ?>">edit</a> 
           <?php } ?>

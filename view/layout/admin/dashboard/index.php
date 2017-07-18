@@ -32,6 +32,7 @@
   <div class="col-sm-6">
     <h2 class="small_title">
       Genres les plus populaires
+      <br><text x="0" y="13" style="cursor: default; user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Équilibre des catégories</text>
     </h2>
     <div id="fav_genres"></div>
   </div>
@@ -48,7 +49,7 @@
   <div class="col-sm-6">
     <h2 class="small_title">
       Répartition des utilisateurs les plus actifs
-      <br><text x="0" y="13" style="cursor: default; user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Les cinq utilisateurs les plus actifs dans les chatrooms des salons</text>
+      <br><text x="0" y="13" style="cursor: default; user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto; font-size: 14px;color:#BDBDBD;" fill="#BDBDBD" dx="0px">Les cinq utilisateurs les plus actifs (messages) dans les chatrooms des salons</text>
     </h2>
     <div id="most_active_users"></div>
   </div>

@@ -35,6 +35,11 @@ class User{
     return $this->db->getCustom($request);
   }
 
+  public function getGrades($id){
+    $request = "SELECT grade_user FROM notes WHERE user_id = ".$id;
+    return $this->db->getCustomAll($request);
+  }
+
   public function sendReadNotif($table, $id){
     return $this->db->edit($table, [':unread' => 0, ':id' => $id]);
   }

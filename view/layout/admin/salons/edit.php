@@ -23,7 +23,8 @@
   </div>
 </div>
 <?php } 
-$salonPast = (strtotime( $salon['date'] ) < time() && $salon['running'] != 1 && $curr_user['isAdmin'] != 1) ? true : false;
+$salonPast = (strtotime( $salon['date'] ) < time() && $salon['running'] != 1) ? true : false;
+$isset = false;
 ?>
 <div class="row">
   <div class="col-sm-6">
@@ -112,7 +113,7 @@ if(intval($grades[0]['grade_user']) != 0 || intval($grades[1]['grade_user']) != 
           $i = 0;
           foreach ($grades as $key => $grade) {
             if(
-              $grade['user_id'] !== $salon['admin_salon_id']
+              $grade['user_id'] !== $salon['admin_salon_id'] 
             ){
 
               $nmbrmsg = count($salons->getParticip($grade['user_id'], $salon['id']));
@@ -146,9 +147,9 @@ if(intval($grades[0]['grade_user']) != 0 || intval($grades[1]['grade_user']) != 
             </td>
           <?php
               if(
-                ($salon['admin_salon_id'] == 1 && $key == 2)
-                || ($salon['admin_salon_id'] != 1 && $key == 1)
+                $isset == false
               ){
+                $isset = true;
               ?>
                 <td rowspan="<?= $countg; ?>" style="vertical-align: middle; border:1px solid #ddd;background-color: #fafafa;">
                   <div style="margin: 20px 50px;">
@@ -192,7 +193,7 @@ if(intval($grades[0]['grade_user']) != 0 || intval($grades[1]['grade_user']) != 
 } ?>
 <div class="row">
   <div class="col-sm-12 align-right">
-    <?= ($salonPast && $hasAlreadyGraded) ? ' <button type="submit" onclick="return false;" class="btn btn-disabled">Modifier</button>' : '<button type="submit" class="btn btn-primary">Modifier</button>'; ?>
+    <?= ($salonPast && $hasAlreadyGraded) ? '<br>' : '<button type="submit" class="btn btn-primary">Modifier</button>'; ?>
   </div>
 </div>
 </form>

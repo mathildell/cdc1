@@ -6,6 +6,41 @@
     <div class="col-sm-8 col-sm-offset-1 profile-info">
       <h3><?= $theUser['username']; ?></h3> 
       <p><?= $theUser['email']; ?></p>
+        <?php 
+          $grades = $user->getGrades($theUser['id']);
+          if(!empty($grades)){
+        ?>
+          <div class="notes">
+        <?php
+            $total = [];
+            foreach ($grades as $key => $grad) {
+              array_push($total, $grad['grade_user']);
+            }
+            $avg = round(array_sum($total)/count($total), 2);
+            $avgNum = round($avg, 0);
+            var_dump($avg, $avgNum); 
+            ?>
+            <div class="grade">  
+              <div class="form-group active">
+                <label></label>
+              </div>
+              <div class="form-group <?= ($avgNum >= 2) ? ' active' : ''; ?>">
+                <label></label>
+              </div>
+              <div class="form-group <?= ($avgNum >= 3) ? ' active' : ''; ?>">
+                <label></label>
+              </div>
+              <div class="form-group  <?= ($avgNum >= 4) ? ' active' : ''; ?>">
+                <label></label>
+              </div>
+              <span class="grade_count"><?= $avg; ?></span>
+            </div>
+            <?php
+          ?>
+          </div>
+          <?php
+          }
+        ?>
       <div class="description">
         <?= isset($theUser['description']) ? $theUser['description'] : ""; ?>
       </div>
