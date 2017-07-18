@@ -1,6 +1,9 @@
 # Club des Critiques
 PHP 7.1.4, sans framework. Environnement SASS. Icon font de [Fontastic](https://app.fontastic.me).
 
+### Github
+
+https://github.com/mathildell/cdc1
 
 #### Compiler la stylesheet
 À la racine du projet :
