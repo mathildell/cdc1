@@ -1,5 +1,6 @@
 <form class="form admin" method="post" action="<?= $root ?>/processes/editsalon">
 <input type="hidden" value="<?= $salon['id']; ?>" name="id">
+<input type="hidden" value="<?= $salon['previous_running']; ?>" name="previous_running">
 <?php
   //strtotime( $salon['date'] ) < time() === le salon était avant
   if(

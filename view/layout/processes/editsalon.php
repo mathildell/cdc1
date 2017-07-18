@@ -9,6 +9,7 @@ if($curr_user['isAdmin'] == 1 || $curr_user['id'] == $_POST['admin_user_id']){
   $work_id = isset($_POST["book"]) ? intval($_POST["book"]) : '';
   $admin_salon_id = isset($_POST["admin_user_id"]) ? intval($_POST["admin_user_id"]) : '';
   $salon_open = isset($_POST["salon_open"]) ? intval($_POST["salon_open"]) : 0;
+  $previous_running = isset($_POST["previous_running"]) ? intval($_POST["previous_running"]) : 0;
 
   $grade_users = isset($_POST['grade_users']) ? 1 : 0;
 
@@ -34,6 +35,21 @@ if($curr_user['isAdmin'] == 1 || $curr_user['id'] == $_POST['admin_user_id']){
     $update = $salons->update($data);
     
     if($update){
+      if($salon_open == 1 && $previous_running == 0){
+        $grades  = $salons->getGrades($id);
+        $work = $salons->getWorkOfSalon($id);
+        foreach ($grades as $key => $grade) {
+          $msg = "Le salon n°".$id." sur <b>".$work['name']."</b> vient de commencer ! Connectez vous et participez à la discussion <a href=\"http://clubcritique.tk/salons/".$id."\">à cette adresse</a>.";
+          $msg = wordwrap($msg,70);
+          $subject = "Votre salon vient de commencer !";
+          $headers = "From: mathildelucelucas@gmail.com";
+          mail($email,$subject,$msg,$headers);
+        }
+
+      }
+
+
+
       if($grade_users > 0 && $salon_open != 1 && intval($_POST['hasAlreadyGraded']) === 0){
         for($i = 0; $i < intval($_POST['nbr_participants']); $i++){
           $dayum = [

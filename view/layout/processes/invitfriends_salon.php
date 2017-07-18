@@ -12,6 +12,7 @@ if($_SESSION['loggedin']){
       ':unread' => 1,
       ':timestamp' => $_POST['timestamp']
     ];
+
     return $ac = $user->sendMessage($data);
   }
 }

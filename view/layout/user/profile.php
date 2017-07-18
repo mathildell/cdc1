@@ -5,42 +5,46 @@
     </div>
     <div class="col-sm-8 col-sm-offset-1 profile-info">
       <h3><?= $theUser['username']; ?></h3> 
-      <p><?= $theUser['email']; ?></p>
+      <div class="info">
+        <?= $theUser['email']; ?>
         <?php 
           $grades = $user->getGrades($theUser['id']);
           if(!empty($grades)){
         ?>
-          <div class="notes">
         <?php
             $total = [];
             foreach ($grades as $key => $grad) {
-              array_push($total, $grad['grade_user']);
-            }
+              if(intval($grad['grade_user']) > 1){ array_push($total, $grad['grade_user']); }
+            } 
+            if(!empty($total)){ 
             $avg = round(array_sum($total)/count($total), 2);
             $avgNum = round($avg, 0);
-            var_dump($avg, $avgNum); 
             ?>
+          &nbsp;&nbsp;&nbsp;
+          |
+          &nbsp;&nbsp;&nbsp;
             <div class="grade">  
               <div class="form-group active">
                 <label></label>
               </div>
-              <div class="form-group <?= ($avgNum >= 2) ? ' active' : ''; ?>">
+              <div class="form-group<?= ($avgNum >= 2) ? ' active' : ''; ?>">
                 <label></label>
               </div>
-              <div class="form-group <?= ($avgNum >= 3) ? ' active' : ''; ?>">
+              <div class="form-group<?= ($avgNum >= 3) ? ' active' : ''; ?>">
                 <label></label>
               </div>
-              <div class="form-group  <?= ($avgNum >= 4) ? ' active' : ''; ?>">
+              <div class="form-group<?= ($avgNum >= 4) ? ' active' : ''; ?>">
                 <label></label>
               </div>
-              <span class="grade_count"><?= $avg; ?></span>
+              <h4 class="grade_count"><span><?= $avg; ?></span> /4</h4>
             </div>
             <?php
           ?>
-          </div>
           <?php
+            }
           }
         ?>
+      </div>
       <div class="description">
         <?= isset($theUser['description']) ? $theUser['description'] : ""; ?>
       </div>
@@ -68,7 +72,7 @@
         }else{
         ?>
         <form action="<?= $root ?>/processes/addfriend" method="post"> 
-          <input type="hidden" name="friend_id" value="<?= $theUser['id']; ?>"> 
+          <input type="hidden" name="friend_id" value="<?= $theUser['id']; ?>">  
           <button type="submit" class="btn btn-primary"> 
             Ajouter en contact
           </button> 
@@ -196,8 +200,3 @@ else{
 <?php
 }
 ?>
-
-
-
-
-

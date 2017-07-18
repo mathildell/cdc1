@@ -24,6 +24,19 @@
       ':unread' => 1,
       ':timestamp' => $timestamp
     ];
+
+    $msg = $sender_name." vous a envoyé un message sur le <a href=\"http://clubcritique.tk/\">Club des Critiques</a>. Vous pouvez le consulter et y répondre <a href=\"http://clubcritique.tk/user/".$receiver_id."/messages\">à cette adresse</a> !";
+    $msg = wordwrap($msg,70);
+    $subject = $sender_name." vous a envoyé un message !";
+    $headers = "From: mathildelucelucas@gmail.com";
+    mail($email,$subject,$msg,$headers);
+
+    $msg = "Votre message a bien été envoyé. Vous pouvez le consulter <a href=\"http://clubcritique.tk/user/".$sender_id."/messages\">à cette adresse</a> !";
+    $msg = wordwrap($msg,70);
+    $subject = "Votre message a bien été envoyé";
+    $headers = "From: mathildelucelucas@gmail.com";
+    mail($email,$subject,$msg,$headers);
+
     $ac = $user->sendMessage($data);
     if($ac){
       $_SESSION['feedback'] = 'sendmsg_success';

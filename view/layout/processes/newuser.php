@@ -9,7 +9,7 @@ if(isset($_POST["email"])){
     $subject = "Bienvenue sur le Club des Critiques";
     $headers = "From: mathildelucelucas@gmail.com";
 
-    //mail($email,$subject,$msg,$headers);
+    mail($email,$subject,$msg,$headers);
 
     $user->registerEmail(md5($pwd), $email);
     $_SESSION['pwd_temp'] = $pwd;
