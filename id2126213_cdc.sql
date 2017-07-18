@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 18, 2017 at 05:35 PM
+-- Generation Time: Jul 18, 2017 at 11:14 PM
 -- Server version: 10.1.20-MariaDB
 -- PHP Version: 7.0.8
 
@@ -110,34 +110,34 @@ INSERT INTO `chatbox` (`id`, `salon_id`, `user_id`, `messages`, `timestamp`) VAL
 (15, 2, 3, 'Say it in Russian! What are their names? I don\'t \'need\' to drink. I can quit anytime I want! Belligerent and numerous.<br />\n<br />\nThese old Doomsday Devices are dangerously unstable. I\'ll rest easier not knowing where they are. Aww, it\'s true. I\'ve been hiding it for so long. Meh. I\'m sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.', '2017-06-26 19:22:23'),
 (16, 2, 1, 'Stop it, stop it. It\'s fine. I will \'destroy\' you! Well, let\'s just dump it in the sewer and say we delivered it. Fetal stemcells, aren\'t those controversial? I daresay that Fry has discovered the smelliest object in the known universe!<br />\n<br />\nNow, now. Perfectly symmetrical violence never solved anything. And from now on you\'re all named Bender Jr. For the last time, I don\'t like lilacs! Your \'first\' wife was the one who liked lilacs! This opera\'s as lousy as it is brilliant! Your lyrics lack subtlety. You can\'t just have your characters announce how they feel. That makes me feel angry!', '2017-06-27 20:22:57'),
 (17, 4, 1, 'Hello Bikki, you here?', '2017-06-28 15:54:17'),
-(18, 4, 7, '#JusticeForCredence', '2017-07-28 15:54:32'),
+(18, 4, 5, '#JusticeForCredence', '2017-07-18 22:57:02'),
 (19, 4, 1, '#GiveErzaAnAward', '2017-07-30 15:55:00'),
-(20, 4, 7, '#FreeEddieRedmayne', '2017-07-31 15:55:18'),
+(20, 4, 5, '#FreeEddieRedmayne', '2017-07-18 22:57:05'),
 (21, 4, 1, 'The only fantastic thing about that movie is the what-the-fuck-ing', '2017-07-02 15:56:14'),
 (22, 3, 5, 'Le pire film de la saga', '2017-07-03 12:16:40'),
-(23, 2, 7, 'Hey!', '2017-07-03 13:13:04'),
+(23, 2, 3, 'Hey!', '2017-07-18 22:57:08'),
 (24, 4, 3, 'Those guys are inside you building a piece of shit Ethan! They\'re inside you building a monument to compromise! Fuck them, fuck those people, fuck this whole thing Ethan. Like nothing shady ever happened in a fully furnished office?', '2017-07-03 13:29:39'),
 (25, 4, 4, 'You ever hear about Wall Street Morty? You know what those guys do in their fancy board rooms? They take their balls and dip \'em in cocaine and wipe \'em all over each other. You know Grandpa goes around and he does his business in public because grandpa isn\'t shady.', '2017-07-03 13:30:19'),
 (26, 4, 5, 'Yo! What up my glip glops! its fine, everythings is fine. theres an infinite number of realities Morty, and in a few dozens of those i got lucky and turned everything back to normal. I just killed my family! I don’t care who they were! No jumping in the sewer!', '2017-07-03 16:30:49'),
 (27, 4, 1, 'I mixed in some praying mantis DNA. You know a praying mantis is the exact opposite of a vole, Morty? They mate once and then bluergh cut each other\'s heads off. God? God\'s turning people into insect monsters Beth. I\'m the one beating them to death. Thank me.', '2017-07-03 17:31:16'),
 (28, 4, 4, '\'Quantum carburetor\'? Jesus, Morty. You can\'t just add a Sci-Fi word to a car word and hope it means something... Huh, looks like something\'s wrong with the microverse battery. We\'re gonna have to go inside. Well he roped me into this!', '2017-07-03 19:31:46'),
 (29, 4, 3, 'Je ferme ce salon, bonsoir.', '2017-07-03 20:33:07'),
-(30, 6, 8, 'Salut !', '2017-07-03 17:57:22'),
+(30, 6, 4, 'Salut !', '2017-07-18 22:56:42'),
 (31, 6, 4, 'Bonjour!', '2017-07-03 18:00:04'),
-(32, 6, 8, 'Ah ! Mon ami Julian..', '2017-07-04 18:00:56'),
+(32, 6, 4, 'Ah ! Mon ami Julian..', '2017-07-18 22:56:46'),
 (33, 6, 5, 'Et ton amie Lisa? ;)', '2017-07-03 18:01:51'),
 (34, 6, 1, 'Et ton amie admin? :\')', '2017-07-04 20:03:09'),
-(35, 6, 8, 'Yay tous ces amis :\')', '2017-07-05 13:04:33'),
-(36, 6, 8, 'Du coup, vu le film, tous ces comptes.. Y\'a pas un lien quelque part ?', '2017-07-05 12:05:02'),
+(35, 6, 4, 'Yay tous ces amis :\')', '2017-07-18 22:56:49'),
+(36, 6, 4, 'Du coup, vu le film, tous ces comptes.. Y\'a pas un lien quelque part ?', '2017-07-18 22:56:51'),
 (37, 6, 1, 'c\'bon, tu peux fermer le chat je pense! tout le monde a écrit au moins un message', '2017-07-05 16:05:24'),
 (38, 6, 1, 'mais attends', '2017-07-06 15:05:38'),
 (39, 6, 1, 'nan bouges pas! haha', '2017-07-03 18:05:44'),
 (40, 6, 5, 'voilà! normalement c\'est bon', '2017-07-11 23:06:35'),
-(41, 6, 8, 'Ahué par contre jpense jamais à scroll, y\'a pas un moyen de faire en sorte que l\'iframe ça scroll tout en bas automatiquement à chaque tour ?', '2017-07-03 23:06:39'),
+(41, 6, 4, 'Ahué par contre jpense jamais à scroll, y\'a pas un moyen de faire en sorte que l\'iframe ça scroll tout en bas automatiquement à chaque tour ?', '2017-07-18 22:56:54'),
 (42, 6, 5, 'normalement ça le fait tout seul :/', '2017-07-05 21:06:51'),
 (43, 6, 5, 'Test test test est-ce que tu scroll', '2017-07-13 22:07:11'),
 (44, 6, 5, 'Nan okay ça bug, j\'vais corriger ça lmao', '2017-07-13 21:07:23'),
-(45, 6, 8, 'Yes ce serait mieux haha', '2017-07-15 22:07:36'),
+(45, 6, 4, 'Yes ce serait mieux haha', '2017-07-18 22:56:56'),
 (46, 7, 4, 'I can finally go on that trip I\'ve been talking about. Well, she\'s my daughter, Summer. I outrank you. Or, family means nothing, in which case, don\'t play that card. Dont look at me! That guy over there roped me into this. Prepare to be emancipated from your own inferior genes!', '2017-07-09 21:48:08'),
 (47, 7, 1, 'Get off the high road Summer. We all got pink eye because you wouldn\'t stop texting on the toilet. Whoa, spoilers! I\'m a whole season behind. We don\'t whitewash it either, Morty. I mean, the pirates are really rapey. He\'s not a hot girl. He can\'t just bail on his life and set up shop in someone else\'s.', '2017-07-12 22:48:26'),
 (48, 7, 4, 'You created a day care for my dad? The trick to cereal is keeping 70% of it above the milk. Well, she\'s my daughter, Summer. I outrank you. Or, family means nothing, in which case, don\'t play that card. Oh good job Morty! You killed my best customer but you saved a mind reading fart!', '2017-07-17 20:48:37'),
@@ -242,7 +242,6 @@ INSERT INTO `friends` (`id`, `user_1_id`, `user_2_id`, `timestamp`) VALUES
 (4, 1, 3, '2017-07-02 14:39:02'),
 (5, 1, 7, '2017-07-02 15:49:39'),
 (6, 5, 1, '2017-07-03 18:08:39'),
-(7, 2, 8, '2017-07-03 19:10:16'),
 (8, 3, 1, '2017-07-11 18:37:03');
 
 -- --------------------------------------------------------
@@ -267,11 +266,11 @@ INSERT INTO `notes` (`id`, `user_id`, `salon_id`, `grade`, `grade_user`) VALUES
 (1, 1, 1, 3, 0),
 (2, 2, 1, 1, 0),
 (3, 1, 2, 2, 4),
-(4, 7, 2, 1, 0),
+(4, 3, 2, 1, 0),
 (5, 3, 2, 4, 2),
 (6, 4, 3, 2, 3),
 (7, 1, 4, 1, 4),
-(8, 7, 4, 1, 4),
+(8, 3, 4, 1, 4),
 (9, 2, 3, 3, 0),
 (10, 3, 3, 2, 2),
 (11, 5, 3, 1, 1),
@@ -282,7 +281,7 @@ INSERT INTO `notes` (`id`, `user_id`, `salon_id`, `grade`, `grade_user`) VALUES
 (16, 8, 6, 3, 0),
 (17, 5, 6, 4, 3),
 (18, 4, 6, 3, 4),
-(19, 8, 3, 1, 0),
+(19, 4, 3, 1, 0),
 (20, 1, 7, 1, 4),
 (21, 4, 7, 4, 0),
 (22, 2, 7, 2, 2),
@@ -314,9 +313,6 @@ INSERT INTO `private_messages` (`id`, `receiver_id`, `sender_id`, `sender_name`,
 (1, 1, 2, 'utilisateur', 'email@email', 'Bonjour,<br />\r\nAre you hungry for apples? We don\'t whitewash it either, Morty. I mean, the pirates are really rapey. Pluto\'s a planet. Meeseeks were not born into this world fumbling for meaning, Jerry!<br />\r\nEw, Grandpa, so gross! You\'re talking about my mom! Hi! I\'m Mr Meeseeks! Look at me! S-S-Samantha. Your failures are your own, old man! I say, follow throooough!', 0, '2017-07-02 14:29:23'),
 (2, 2, 1, 'administrateur', 'admin@admin', 'Hello,<br />\r\n<br />\r\nThey\'ll just fall right out of my ass! I\'ve done this too many times! Why don\'t you ask the smartest people in the universe, Jerry? Oh yeah you can\'t. They blew up. Oh, it gets darker, Morty. Welcome to the darkest year of our adventures. First thing that\'s different? No more dad, Morty. Sometimes science is a lot more art, than science. A lot of people don\'t get that.<br />\r\n<br />\r\nI know you\'re real because i have a ton of bad memories with you. Whoa, spoilers! I\'m a whole season behind. Countries known for their sexually aggressive men. I\'m Scary Terry!!', 0, '2017-07-02 14:36:52'),
 (3, 3, 1, 'administrateur', 'admin@admin', 'Hello,<br />\r\nI just wanna die! Pluto\'s a planet. What are you looking at, mother fucker! Meeseeks were not born into this world fumbling for meaning, Jerry!<br />\r\nYou know my name, that\'s disarming. This is Principal Vagina. No relation. Morty! The principal and I have discussed it, a-a-and we\'re both insecure enough to agree to a three-way! That\'s Right Morty! This is gonna be a lot like that. Except you know. It\'s gonna make sense.', 0, '2017-07-02 14:39:03'),
-(4, 7, 1, 'administrateur', 'admin@admin', 'hello!! &lt;3', 0, '2017-07-02 15:47:41'),
-(5, 1, 7, 'bikki', 'nezhaley@outlook.com', 'bonjour ( ͡° ͜ʖ ͡°)', 0, '2017-07-02 15:48:31'),
-(6, 8, 2, 'User Lambda', 'email@email', 'kikou', 0, '2017-07-03 19:10:16'),
 (7, 3, 1, 'administrateur', 'admin@admin', '\'; $this-&gt;db-&gt;exec(&quot;SELECT * FROM users&quot;)', 0, '2017-07-11 20:32:33');
 
 -- --------------------------------------------------------
@@ -341,11 +337,11 @@ CREATE TABLE `salons` (
 
 INSERT INTO `salons` (`id`, `work_id`, `date`, `nbr_person_max`, `admin_salon_id`, `work_isdeleted`, `running`) VALUES
 (1, 15, '2017-06-20 20:30:00.000000', 20, 1, 0, 0),
-(2, 2, '2017-07-02 20:30:00.000000', 20, 7, 0, 0),
-(3, 11, '2017-07-10 22:30:00.000000', 20, 7, 0, 0),
+(2, 2, '2017-07-02 20:30:00.000000', 20, 4, 0, 0),
+(3, 11, '2017-07-10 22:30:00.000000', 20, 4, 0, 0),
 (4, 13, '2017-07-03 15:30:00.000000', 20, 3, 0, 0),
 (5, 9, '2017-07-27 22:10:00.000000', 20, 1, 0, 0),
-(6, 12, '2017-07-03 18:00:00.000000', 20, 8, 0, 0),
+(6, 12, '2017-07-03 18:00:00.000000', 20, 3, 0, 0),
 (7, 14, '2017-07-03 17:30:00.000000', 20, 4, 0, 0),
 (8, 19, '2017-07-16 20:30:00.000000', 20, 3, 0, 0);
 
@@ -389,15 +385,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `description`, `picture`, `isAdmin`) VALUES
-(1, 'administrateur', 'admin@admin', '21232f297a57a5a743894a0e4a801fc3', '', '/view/assets/img/user_upload/administrateur_595a99efea6cc.jpg', 1),
-(2, 'Elaine Barnes', 'elaine.barnes34@example.com\n', '21232f297a57a5a743894a0e4a801fc3', 'Utilisateur id 2', '/view/assets/img/user_upload/utilisateur_595a605446ab1.jpg', 0),
-(3, 'Francisco Franklin', 'francisco.franklin57@example.com', '21232f297a57a5a743894a0e4a801fc3', '', '/view/assets/img/user_upload/Francisco Franklin_595a605d2e7b7.jpg', 0),
-(4, 'Julian Lewis', 'julian.lewis57@example.com', '21232f297a57a5a743894a0e4a801fc3', '', '/view/assets/img/user_upload/Julian Lewis_595a60684695f.jpg', 0),
-(5, 'Lisa Ross', 'lisa.ross84@example.com', '21232f297a57a5a743894a0e4a801fc3', '', '/view/assets/img/user_upload/Lisa Ross_595a607408a6d.jpg', 0),
-(6, 'Dwight Harris', 'dwight.harris30@example.com', '21232f297a57a5a743894a0e4a801fc3', '', '/view/assets/img/user_upload/Dwight Harris_595a6084447b5.jpg', 0),
-(7, 'bikki', 'nezhaley@outlook.com', '21232f297a57a5a743894a0e4a801fc3', 'hello it\'s me', '/view/assets/img/user_upload/bikki_595a60919418d.jpg', 1),
-(8, 'Jerem', 'jeremyfs.moreau@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Les livres, c\'est bien pour lire.', '/view/assets/img/user_upload/Jerem_595a5a35c94ef.jpeg', 0),
-(9, 'admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', 'Description', '/view/assets/img/user_upload/admin_596e0f40ead1c.jpg', 1);
+(1, 'admin', 'admin@admin', '21232f297a57a5a743894a0e4a801fc3', '', '/view/assets/img/user_upload/administrateur_595a99efea6cc.jpg', 1),
+(2, 'Francis Stewart', 'francis.stewart22@example.com', 'aa36dc6e81e2ac7ad03e12fedcb6a2c0', '', '/view/assets/img/user_upload/Francis Stewart_596e93e9ae2a4.jpeg', 0),
+(3, 'barry.wheeler44', 'barry.wheeler44@example.com', 'aa36dc6e81e2ac7ad03e12fedcb6a2c0', '', '/view/assets/img/user_upload/barry.wheeler44_596e944c72f20.jpg', 0),
+(4, 'krin.edwards92', 'krin.edwards92@example.com', 'aa36dc6e81e2ac7ad03e12fedcb6a2c0', '', '/view/assets/img/user_upload/krin.edwards92_596e948d44a33.jpg', 0),
+(5, 'lillian.payne40', 'lillian.payne40@example.com', 'aa36dc6e81e2ac7ad03e12fedcb6a2c0', '', '/view/assets/img/user_upload/lillian.payne40_596e94c86c798.jpg', 0),
+(6, 'julio.andrews49', 'julio.andrews49@example.com', 'aa36dc6e81e2ac7ad03e12fedcb6a2c0', '', '/view/assets/img/user_upload/julio.andrews49_596e957855d03.jpg', 0),
+(7, 'herminia.medina90', 'herminia.medina90@example.com', 'aa36dc6e81e2ac7ad03e12fedcb6a2c0', '', '/view/assets/img/user_upload/herminia.medina90_596e95ab7b3f7.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -581,7 +575,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `works`
 --

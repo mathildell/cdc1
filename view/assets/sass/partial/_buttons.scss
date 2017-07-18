@@ -29,6 +29,10 @@ button{
       color: #ff9900;
     }
   }
+  &.btn-small{
+    padding: 2px 15px;
+    font-size: 12px;
+  }
   &.btn-file {
     margin-top: 20px;
     position: relative;

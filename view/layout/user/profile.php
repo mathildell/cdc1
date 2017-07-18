@@ -84,7 +84,45 @@
     </div>       
   </div>
 </section>
+  <?php $mysalons = $user->mySalons($theUser['id']); 
+  if(!empty($mysalons)){ ?>
+<section class="mes_salons clearfix">
+  <h3 class="big_title">Mes salons</h3>
+  <?php 
+  foreach ($mysalons as $key => $theSalon) {
+  ?>
+    <div class="col-sm-4 book-card">
+      <a href="<?= $root; ?>/discover/<?= $theSalon['type']; ?>/<?= $theSalon['category']; ?>/<?= $theSalon['work_id']; ?>" class="image-holder">
+         <img src="<?= $theSalon['img_src']; ?>" />
+      </a>
+      <div class="book-info">
+        <h3>Salon n°<?= $theSalon['salon_id']; ?></a></h3>
+        <h4><a href="<?= $root; ?>/discover/<?= $theSalon['type']; ?>/<?= $theSalon['category']; ?>/<?= $theSalon['work_id']; ?>"><?= $theSalon['name']; ?></a></h4>
+        <p class="friends">Organisé le <i><?= date( 'l jS F \à H\hi', strtotime( $theSalon['date'] )); ?></i></p><br>
+        <?php 
+          $hasVoted = $salons->hasVoted($theSalon['salon_id'], $curr_user['id']);
+          if(!$hasVoted && ($theSalon['running'] == 1 || strtotime( $theSalon['date'] ) > time()) ){
+          ?>
+          <a class="btn btn-primary btn-small" href="<?= $root; ?>/salons/<?= $theSalon['salon_id']; ?>">S'inscrire</a>
+          <?php
+          }else if($hasVoted && ($theSalon['running'] == 1 || strtotime( $theSalon['date'] ) > time()) ){
+          ?>
+          <a class="btn btn-primary btn-small" href="<?= $root; ?>/salons/<?= $theSalon['salon_id']; ?>">À venir</a>
+          <?php
+          }else{
+          ?>
+          <a class="btn btn-default btn-small" href="<?= $root; ?>/salons/<?= $theSalon['salon_id']; ?>">Discussion</a>
+          <?php
+          }
+        ?>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
+</section>
 <?php 
+}
 if($count_exchanges > 0){
 ?>
 <section class="exchange">

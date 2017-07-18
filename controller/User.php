@@ -35,6 +35,28 @@ class User{
     return $this->db->getCustom($request);
   }
 
+  public function mySalons($id){
+
+    $request = "SELECT 
+                  notes.user_id, notes.salon_id, 
+                  salons.id, salons.date, salons.running,
+                  works.name, works.id AS work_id, works.author, works.type_id, works.category_id, works.img_src,
+                  type.name AS category, 
+                  categories.name AS type
+                FROM notes
+                JOIN salons 
+                ON salons.id = notes.salon_id
+                JOIN works 
+                ON works.id = salons.work_id
+                INNER JOIN type 
+                ON type.id = works.type_id
+                INNER JOIN categories 
+                ON categories.id = works.category_id
+                WHERE notes.user_id = ".$id." ORDER BY salons.date DESC";
+
+    return $this->db->getCustomAll($request);
+  }
+
   public function getGrades($id){
     $request = "SELECT grade_user FROM notes WHERE user_id = ".$id;
     return $this->db->getCustomAll($request);
