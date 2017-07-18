@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST)){
     $email = htmlspecialchars(trim($_POST["email"]));
-    $pwd = htmlspecialchars(trim($_POST["password"]));
+    $pwd = md5(htmlspecialchars(trim($_POST["password"])));
     if(
         isset($email) && !empty($email) &&
         isset($pwd) && !empty($pwd)

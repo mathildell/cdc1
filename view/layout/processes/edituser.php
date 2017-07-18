@@ -6,6 +6,7 @@
     $pwd = htmlspecialchars(trim($_POST["password"]));
     $pwdConfirm = htmlspecialchars(trim($_POST["password_confirm"]));
     $description = nl2br(htmlspecialchars(trim($_POST["description"])));
+    
     if($pwd === $pwdConfirm){
       if($_FILES['profile_picture']['size'] > 0){
         $file = $_FILES['profile_picture'];
@@ -24,12 +25,15 @@
       }
       
       if($uploadOk){
+
         $data = [
           ':username' => $username,
           ':email' => $email,
-          ':password' => $pwd,
           ':description' => $description
         ];
+        if(!empty($pwd) && !empty($pwd)){
+          $data[':password'] = md5($pwd);
+        }
 
         if($_FILES['profile_picture']['size'] > 0){
           $data[':picture'] = $path;

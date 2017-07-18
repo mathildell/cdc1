@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['loggedin']){
+if(isset($_SESSION['loggedin'])){
 $salonDetails  = $salons->getOne($setid);
 $bookDetails = $works->getOne($salonDetails['work_id']);
 $bookCategory = $works->getBookCat($bookDetails["id"])['name'];
@@ -376,7 +376,7 @@ $(function(){
 <?php
 }
 }else{
-  $_SESSION['feedback'] = 'notallowed';
+  $_SESSION['feedback'] = 'compterequis';
   echo '<script>window.location.replace("'.$root.'/login");</script>';
 }
 ?>

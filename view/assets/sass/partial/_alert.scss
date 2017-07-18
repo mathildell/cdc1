@@ -29,4 +29,11 @@
     &:before{content: "\68";}
     &, &:before{box-shadow: 0px 5px 8px $green;}
   }
+  &.alert-info{
+    background-color: lighten($brown, 27%);
+    border-color: lighten($brown, 10%);
+    color: $brown;
+    &:before{content: "\77";}
+    &, &:before{box-shadow: 0px 5px 8px lighten($brown, 10%);}
+  }
 }

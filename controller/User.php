@@ -40,8 +40,7 @@ class User{
   }
 
   public function registerEmail($pwd, $email){
-
-    return $this->db->save("users", [ ":email" => $email, ":username" => "nouvel_utilisateur", ":password" =>  $pwd ]);
+    return $this->db->save("users", [ ":email" => $email, ":username" =>explode("@", $email)[0], ":password" =>  $pwd ]);
   }
 
   public function newAdminUser($data){

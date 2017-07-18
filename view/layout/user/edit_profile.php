@@ -24,12 +24,12 @@
           
           <div class="form-group"> 
             <label for="password">Mot de passe:</label>
-            <input class="form-control" id="password" type="password" name="password" value="<?= $theUser['password']; ?>"> 
+            <input class="form-control" id="password" type="password" name="password"> 
           </div>
 
           <div class="form-group"> 
             <label for="password_confirm">Confirmer le mot de passe:</label>
-            <input class="form-control" id="password_confirm" type="password" name="password_confirm" value="<?= $theUser['password']; ?>"> 
+            <input class="form-control" id="password_confirm" type="password" name="password_confirm"> 
           </div>
 
          <div class="description" style="max-width: 100%;">

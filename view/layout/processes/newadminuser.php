@@ -3,8 +3,8 @@
     $username = htmlspecialchars(trim($_POST["username"]));
     $email = htmlspecialchars(trim($_POST["nike-email"]));
     $isAdmin = isset($_POST["isAdmin"]) ? intval($_POST["isAdmin"]) : "no";
-    $pwd = htmlspecialchars(trim($_POST["password"]));
-    $pwdConfirm = htmlspecialchars(trim($_POST["password_confirm"]));
+    $pwd = md5(htmlspecialchars(trim($_POST["password"])));
+    $pwdConfirm = md5(htmlspecialchars(trim($_POST["password_confirm"])));
     $description = htmlspecialchars(trim($_POST["description"]));
     if($pwd === $pwdConfirm){
       $file = $_FILES['profile_picture'];
